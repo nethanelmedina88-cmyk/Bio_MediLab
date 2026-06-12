@@ -470,11 +470,56 @@
   .fab .lab{ display:none }
   @media (min-width:560px){ .fab .lab{ display:inline } }
 
+  /* ===================== GLOSSARY APP ===================== */
+  .app-card{
+    display:grid; grid-template-columns:1fr; gap:clamp(22px,3.4vw,40px); align-items:center;
+    background:var(--surface); border:1px solid var(--line); border-radius:22px;
+    padding:clamp(22px,3.4vw,38px); box-shadow:var(--shadow-md);
+  }
+  @media (min-width:820px){ .app-card{ grid-template-columns:1.1fr .9fr } }
+  .app-feats{ list-style:none; margin:0 0 22px; padding:0; display:flex; flex-direction:column; gap:13px }
+  .app-feats li{ position:relative; padding-inline-start:30px; font-size:15.5px; color:var(--ink); line-height:1.5 }
+  .app-feats li svg{ position:absolute; inset-inline-start:0; top:2px; color:var(--green) }
+  .app-ctas{ display:flex; align-items:center; gap:14px; flex-wrap:wrap }
+  .app-note{ font-size:13px; color:var(--ink-3) }
+  .app-preview{ display:flex; justify-content:center }
+  .app-screen{
+    width:100%; max-width:340px; background:var(--bg-2); border:1px solid var(--line);
+    border-radius:18px; padding:16px; display:flex; flex-direction:column; gap:10px;
+  }
+  .app-screen-head{ display:flex; align-items:center; gap:9px; font-family:var(--head); font-weight:800; font-size:15px; margin-bottom:4px }
+  .app-screen-head img{ width:28px; height:28px; border-radius:7px; object-fit:cover; background:#fff; border:1px solid var(--line) }
+  .mode-row{
+    display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line);
+    border-radius:12px; padding:11px 13px; font-size:13.5px; font-weight:600; color:var(--ink-2);
+  }
+  .mode-dot{ width:10px; height:10px; border-radius:50%; flex:0 0 10px }
+
+  /* ===================== STAT BAND (about) ===================== */
+  .statband{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:22px 0 6px }
+  @media (min-width:560px){ .statband{ grid-template-columns:repeat(4,1fr) } }
+  .statband-cell{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 12px; text-align:center }
+  .statband-cell b{ display:block; font-family:var(--head); font-weight:900; font-size:clamp(26px,4vw,34px); line-height:1; color:var(--teal) }
+  .statband-cell b em{ font-style:normal; color:var(--amber) }
+  .statband-cell span{ display:block; margin-top:7px; font-size:11.5px; color:var(--ink-3); line-height:1.4 }
+
+  /* ===================== SCROLL REVEAL ===================== */
+  .reveal{ transition:opacity .6s ease, transform .6s ease }
+  .reveal-on .reveal{ opacity:0; transform:translateY(22px) }
+  .reveal-on .reveal.in{ opacity:1; transform:none }
+
   /* ===================== MOTION ===================== */
   @media (prefers-reduced-motion:reduce){
     *{ animation:none !important; transition:none !important; scroll-behavior:auto !important }
+    .reveal{ opacity:1 !important; transform:none !important }
   }
 </style>
+<script>
+  /* Enable scroll-reveal only when motion is allowed — prevents content flash (FOUC) and respects prefers-reduced-motion */
+  if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('reveal-on');
+  }
+</script>
 </head>
 <body>
 
@@ -488,8 +533,9 @@
       <span class="bn">MediLab<span class="bs">מדע קצר ולעניין</span></span>
     </a>
     <nav class="nav" aria-label="ניווט ראשי">
-      <a href="#lessons">שיעורים פרטיים</a>
       <a href="#books">ספרים</a>
+      <a href="#app">אפליקציה</a>
+      <a href="#lessons">שיעורים</a>
       <a href="#testimonials">ממליצים</a>
       <a href="#about">על נתנאל</a>
       <a href="#faq">שאלות</a>
@@ -520,39 +566,133 @@
         </a>
         <a class="btn btn-ghost" href="#books">הספרים שלי <span class="arr" aria-hidden="true">←</span></a>
       </div>
-      <div class="hero-trust">
-        <div class="t"><b><em>10</em>+ שנים</b><span>ניסיון הוראה בתיכון</span></div>
-        <div class="t"><b>94 <em>ממוצע</em></b><span>בבגרות אצל הממליצים</span></div>
-        <div class="t"><b><em>3</em> ספרים</b><span>שאלות · מחקרים · מונחון</span></div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== CREDIBILITY STRIP ===================== -->
-<section class="strip" aria-label="נתונים עיקריים">
-  <div class="strip-grid">
-    <div class="strip-cell"><b><em>10</em>+</b><span>שנות הוראה בתיכון</span></div>
-    <div class="strip-cell"><b><em>5</em> יח״ל</b><span>התמחות בבגרות בביולוגיה</span></div>
-    <div class="strip-cell"><b><em>10</em> יח״ל</b><span>מגמת ביוטכנולוגיה</span></div>
-    <div class="strip-cell"><b><em>2,000</em>+</b><span>שאלות תרגול מהבגרות</span></div>
+<!-- ===================== BOOKS ===================== -->
+<section class="block" id="books" aria-labelledby="books-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">ספרי עזר</span>
+      <h2 id="books-h">ספרי עזר ש<em>כתבתי</em></h2>
+      <p class="lead">סדרה של ספרי עזר לבגרות בביולוגיה, מותאמים לתוכנית הלימודים החדשה לשנת תשפ״ו. כתובים, מאוירים ומנוקדים — נגישים, תמציתיים ומדויקים. אלה הכלים שאני עצמי משתמש בהם בשיעורים.</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="bcard reveal">
+        <div class="bcover">
+          <span class="badge">01</span>
+          <img src="book-questions.png" alt="כריכת ספר השאלות — הכנה לבגרות בביולוגיה 5 יחידות" width="789" height="1113" loading="lazy" />
+        </div>
+        <div>
+          <div class="btitle"><h3>ספר השאלות</h3><span class="bprice"><span class="num-ltr">₪149</span></span></div>
+          <p>אוסף שאלות הבגרות המלא בנושאי הליבה וההעמקה, בהתאמה לתוכנית הלימודים החדשה בביולוגיה 5 יח״ל. מסודר לפי נושא ותת-נושא — תרגול ממוקד וסגירה של כל הפינות.</p>
+          <div class="btags"><span class="tag teal">מהדורה II</span><span class="tag green">1,674 שאלות</span></div>
+          <a class="bsample" href="https://drive.google.com/file/d/19rAilF3kNRLQl1ml8ymjiPi3mtAuirt_/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך ספר השאלות">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
+            פרק לדוגמה
+          </a>
+        </div>
+      </article>
+
+      <article class="bcard reveal">
+        <div class="bcover">
+          <span class="badge">02</span>
+          <img src="book-research.png" alt="כריכת הספר 50 קטעי מחקר בביולוגיה לבגרות" width="789" height="1113" loading="lazy" />
+        </div>
+        <div>
+          <div class="btitle"><h3>קטעי מחקר</h3><span class="bprice"><span class="num-ltr">₪95</span></span></div>
+          <p>50 קטעי מחקר מתוך בחינות הבגרות בביולוגיה ל-5 יח״ל, עם שאלות מקוריות, הצעות לפתרון והסברים מפורטים. תרגול אמיתי לחלק קטעי המחקר בבחינה.</p>
+          <div class="btags"><span class="tag green">פורמט בגרות</span><span class="tag">פתרונות מלאים</span></div>
+          <a class="bsample" href="https://drive.google.com/file/d/1u3d0VqF9pE4NCx7NSHGdTgSstGxeryGZ/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך קטעי מחקר">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
+            פרק לדוגמה
+          </a>
+        </div>
+      </article>
+
+      <article class="bcard reveal">
+        <div class="bcover">
+          <span class="badge">03</span>
+          <img src="book-glossary.png" alt="כריכת המונחון — מילון מונחים בביולוגיה לתיכון" width="789" height="1113" loading="lazy" />
+        </div>
+        <div>
+          <div class="btitle"><h3>מונחון</h3><span class="bprice"><span class="num-ltr">₪69</span></span></div>
+          <p>מילון מודפס של 452 מושגים לתלמידי תיכון, מנוקד על ידי DICTA ומאויר. מחולק לפי נושאי תוכנית הלימודים החדשה — ליבה והעמקה. מהדורת תשפ״ו / 2026.</p>
+          <div class="btags"><span class="tag teal">תשפ״ו · 2026</span><span class="tag green">452 מושגים</span></div>
+          <a class="bsample" href="https://drive.google.com/file/d/1ntd_fbtv1c55AzVrG_ugBawurWVaxlf1/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך המונחון">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
+            פרק לדוגמה
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <div class="bundle reveal">
+      <div>
+        <span class="bt">מבצע · החבילה המלאה</span>
+        <h3>שלושת הספרים יחד</h3>
+        <p>ספר השאלות + קטעי מחקר + מונחון — בדיוק כל מה שצריך לבגרות, במחיר אחד.</p>
+      </div>
+      <div class="price">
+        <span class="old"><span class="num-ltr">₪313</span></span>
+        <span class="new"><span class="num-ltr">₪249</span></span>
+        <span class="save">חוסכים <span class="num-ltr">₪64</span></span>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%AA%20%D7%A9%D7%9C%D7%95%D7%A9%D7%AA%20%D7%94%D7%A1%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">לרכישת החבילה <span class="arr" aria-hidden="true">←</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GLOSSARY APP ===================== -->
+<section class="block alt" id="app" aria-labelledby="app-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">אפליקציה · חינם</span>
+      <h2 id="app-h">שליפים — <em>מילון המושגים הדיגיטלי</em></h2>
+      <p class="lead">אפליקציית ווב חינמית לתרגול מושגי הביולוגיה לבגרות — מילון, כרטיסיות ומבחון אינטראקטיבי. עובדת ישירות בדפדפן או מותקנת כאפליקציה בטלפון, בלי הרשמה.</p>
+    </div>
+
+    <div class="app-card reveal">
+      <div class="app-info">
+        <ul class="app-feats">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>465+ מושגים מנוקדים, מסודרים לפי נושאי תוכנית הלימודים</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>שלושה מצבים: מילון · כרטיסיות · מבחון אינטראקטיבי</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>עובדת בלי הרשמה — חינם לגמרי</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>ניתנת להתקנה כאפליקציה בטלפון (PWA)</li>
+        </ul>
+        <div class="app-ctas">
+          <a class="btn btn-primary" href="https://nethanelmedina88-cmyk.github.io/Medilab_Glossary/" target="_blank" rel="noopener">פתחו את האפליקציה <span class="arr" aria-hidden="true">←</span></a>
+          <span class="app-note">מומלץ לפתוח מהטלפון</span>
+        </div>
+      </div>
+      <div class="app-preview" aria-hidden="true">
+        <div class="app-screen">
+          <div class="app-screen-head"><img src="logo.jpg" alt="" width="28" height="28" /><span>שליפים</span></div>
+          <div class="mode-row"><span class="mode-dot" style="background:#2563EB"></span>מילון — חיפוש וסינון לפי נושא</div>
+          <div class="mode-row"><span class="mode-dot" style="background:#3F9D69"></span>כרטיסיות — תרגול היפוך</div>
+          <div class="mode-row"><span class="mode-dot" style="background:#F0654F"></span>מבחון — שאלות אמריקאיות</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ===================== LESSONS ===================== -->
 <section class="block" id="lessons" aria-labelledby="lessons-h">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="eyebrow">שיעורים פרטיים</span>
       <h2 id="lessons-h">שיעורים פרטיים ב<em>ביולוגיה וביוטכנולוגיה</em></h2>
       <p class="lead">אחד-על-אחד או בקבוצות קטנות של עד 4 תלמידים. מקוון בזום עם לוח אינטראקטיבי, או פרונטלי במרכז ״כיוונים״ באשדוד. מתאים לכיתות י׳—י״ב, השלמת פערים, מגמות ביולוגיה וביוטכנולוגיה, וחזרה אינטנסיבית לפני הבגרות.</p>
     </div>
 
     <div class="grid-3">
-      <article class="lcard">
+      <article class="lcard reveal">
         <div class="lh">
           <span class="lnum">01</span>
-          <div><h3>אחד-על-אחד</h3><p class="lsub">שיעור פרטי מלא · 60 דקות · מקוון או פרונטלי</p></div>
+          <div><h3>אחד-על-אחד</h3><p class="lsub">שיעור פרטי מלא · מקוון או פרונטלי</p></div>
         </div>
         <ul>
           <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>תוכנית עבודה אישית על בסיס אבחון ראשוני</li>
@@ -563,11 +703,11 @@
         <div class="lfoot"><span class="tag teal">מומלץ להשלמות ופערים</span></div>
       </article>
 
-      <article class="lcard feat">
+      <article class="lcard feat reveal">
         <span class="ribbon">הכי פופולרי</span>
         <div class="lh">
           <span class="lnum">02</span>
-          <div><h3>קבוצה קטנה</h3><p class="lsub">עד 4 תלמידים · 90 דקות שבועיות</p></div>
+          <div><h3>קבוצה קטנה</h3><p class="lsub">עד 4 תלמידים · מפגש שבועי קבוע</p></div>
         </div>
         <ul>
           <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>לימוד דינמי לצד חברים ברמה דומה</li>
@@ -578,7 +718,7 @@
         <div class="lfoot"><span class="tag green">המסלול המבוקש ביותר</span></div>
       </article>
 
-      <article class="lcard">
+      <article class="lcard reveal">
         <div class="lh">
           <span class="lnum">03</span>
           <div><h3>מרתון בגרות</h3><p class="lsub">מפגשים אינטנסיביים לקראת מועד הבחינה</p></div>
@@ -606,91 +746,16 @@
   </div>
 </section>
 
-<!-- ===================== BOOKS ===================== -->
-<section class="block alt" id="books" aria-labelledby="books-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">ספרי עזר</span>
-      <h2 id="books-h">ספרי עזר ש<em>כתבתי</em></h2>
-      <p class="lead">סדרה של ספרי עזר לבגרות בביולוגיה, מותאמים לתוכנית הלימודים החדשה לשנת תשפ״ו. כתובים, מאוירים ומנוקדים — נגישים, תמציתיים ומדויקים. אלה הכלים שאני עצמי משתמש בהם בשיעורים.</p>
-    </div>
-
-    <div class="grid-3">
-      <article class="bcard">
-        <div class="bcover">
-          <span class="badge">01</span>
-          <img src="book-questions.png" alt="כריכת ספר השאלות — הכנה לבגרות בביולוגיה 5 יחידות" width="789" height="1113" loading="lazy" />
-        </div>
-        <div>
-          <div class="btitle"><h3>ספר השאלות</h3><span class="bprice"><span class="num-ltr">₪149</span></span></div>
-          <p>אוסף שאלות הבגרות המלא בנושאי הליבה וההעמקה, בהתאמה לתוכנית הלימודים החדשה בביולוגיה 5 יח״ל. מסודר לפי נושא ותת-נושא — תרגול ממוקד וסגירה של כל הפינות.</p>
-          <div class="btags"><span class="tag teal">מהדורה II</span><span class="tag green">1,674 שאלות</span></div>
-          <a class="bsample" href="https://drive.google.com/file/d/19rAilF3kNRLQl1ml8ymjiPi3mtAuirt_/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך ספר השאלות">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
-            פרק לדוגמה
-          </a>
-        </div>
-      </article>
-
-      <article class="bcard">
-        <div class="bcover">
-          <span class="badge">02</span>
-          <img src="book-research.png" alt="כריכת הספר 50 קטעי מחקר בביולוגיה לבגרות" width="789" height="1113" loading="lazy" />
-        </div>
-        <div>
-          <div class="btitle"><h3>קטעי מחקר</h3><span class="bprice"><span class="num-ltr">₪95</span></span></div>
-          <p>50 קטעי מחקר מתוך בחינות הבגרות בביולוגיה ל-5 יח״ל, עם שאלות מקוריות, הצעות לפתרון והסברים מפורטים. תרגול אמיתי לחלק קטעי המחקר בבחינה.</p>
-          <div class="btags"><span class="tag green">פורמט בגרות</span><span class="tag">פתרונות מלאים</span></div>
-          <a class="bsample" href="https://drive.google.com/file/d/1u3d0VqF9pE4NCx7NSHGdTgSstGxeryGZ/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך קטעי מחקר">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
-            פרק לדוגמה
-          </a>
-        </div>
-      </article>
-
-      <article class="bcard">
-        <div class="bcover">
-          <span class="badge">03</span>
-          <img src="book-glossary.png" alt="כריכת המונחון — מילון מונחים בביולוגיה לתיכון" width="789" height="1113" loading="lazy" />
-        </div>
-        <div>
-          <div class="btitle"><h3>מונחון</h3><span class="bprice"><span class="num-ltr">₪69</span></span></div>
-          <p>מילון מודפס של 452 מושגים לתלמידי תיכון, מנוקד על ידי DICTA ומאויר. מחולק לפי נושאי תוכנית הלימודים החדשה — ליבה והעמקה. מהדורת תשפ״ו / 2026.</p>
-          <div class="btags"><span class="tag teal">תשפ״ו · 2026</span><span class="tag green">452 מושגים</span></div>
-          <a class="bsample" href="https://drive.google.com/file/d/1ntd_fbtv1c55AzVrG_ugBawurWVaxlf1/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך המונחון">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
-            פרק לדוגמה
-          </a>
-        </div>
-      </article>
-    </div>
-
-    <div class="bundle">
-      <div>
-        <span class="bt">מבצע · החבילה המלאה</span>
-        <h3>שלושת הספרים יחד</h3>
-        <p>ספר השאלות + קטעי מחקר + מונחון — בדיוק כל מה שצריך לבגרות, במחיר אחד.</p>
-      </div>
-      <div class="price">
-        <span class="old"><span class="num-ltr">₪313</span></span>
-        <span class="new"><span class="num-ltr">₪249</span></span>
-        <span class="save">חוסכים <span class="num-ltr">₪64</span></span>
-      </div>
-      <a class="btn btn-primary" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%AA%20%D7%A9%D7%9C%D7%95%D7%A9%D7%AA%20%D7%94%D7%A1%D7%A4%D7%A8%D7%99%D7%9D" target="_blank" rel="noopener">לרכישת החבילה <span class="arr" aria-hidden="true">←</span></a>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== TESTIMONIALS ===================== -->
 <section class="block" id="testimonials" aria-labelledby="testi-h">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="eyebrow">ממליצים</span>
       <h2 id="testi-h">מה תלמידים <em>כותבים עליי</em></h2>
       <p class="lead">שמונה תלמידים שלי, בלשונם. הציון לצד כל אחד הוא מה שקיבל בבגרות — אבל הסיפור האמיתי הוא מה שכתבו מסביב. החליקו לצדדים כדי לקרוא עוד.</p>
     </div>
 
-    <div class="car-wrap">
+    <div class="car-wrap reveal">
       <ul class="car-track" id="testiTrack" tabindex="0" aria-label="המלצות תלמידים — ניתן לגלול לצדדים" style="list-style:none;margin-block:0;padding-block:6px 14px">
         <li class="tcard">
           <span class="grade"><span class="lbl">קיבלה</span>100</span>
@@ -756,7 +821,7 @@
 <!-- ===================== ABOUT ===================== -->
 <section class="block alt" id="about" aria-labelledby="about-h">
   <div class="wrap about">
-    <div class="about-card">
+    <div class="about-card reveal">
       <div class="frame">
         <img src="portrait.jpg" alt="נתנאל יוחאי מדינה — מורה לביולוגיה וביוטכנולוגיה" width="300" height="375" loading="lazy" />
       </div>
@@ -766,11 +831,17 @@
       </div>
     </div>
 
-    <div class="about-body">
+    <div class="about-body reveal">
       <span class="eyebrow">על נתנאל</span>
       <h2 id="about-h">נעים להכיר — אני <em>נתנאל</em></h2>
       <p>מורה לביולוגיה ולביוטכנולוגיה עם 10 שנות ניסיון בתיכון, מגיש תלמידים לבגרויות בביולוגיה (5 יח״ל) ובביוטכנולוגיה (10 יח״ל). מעביר שיעורים פרטיים אחד-על-אחד או בקבוצות קטנות — מקוון בזום או פרונטלי במרכז ״כיוונים״ באשדוד. אני מאמין שלכל תלמיד יש דרך משלו להבין, והתפקיד שלי הוא למצוא אותה.</p>
       <p>לצד ההוראה כתבתי שלושה ספרי עזר שמסודרים בדיוק כמו שתוכנית הלימודים דורשת: <strong>ספר השאלות</strong> עם מעל 1,600 שאלות בגרות, <strong>קטעי מחקר</strong> בפורמט בגרות עם פתרונות, ו<strong>מונחון</strong> עם 452 מושגים — כלים שאני משתמש בהם בשיעורים עצמם.</p>
+      <div class="statband">
+        <div class="statband-cell"><b>94</b><span>ציון ממוצע בבגרות אצל הממליצים</span></div>
+        <div class="statband-cell"><b>100</b><span>הציון הגבוה ביותר שהושג</span></div>
+        <div class="statband-cell"><b>10<em>+</em></b><span>שנות הוראה בתיכון</span></div>
+        <div class="statband-cell"><b>3</b><span>תארים אקדמיים · חיפה · אורנים · ויצמן</span></div>
+      </div>
       <div class="about-tags">
         <span class="tag teal">B.Sc ביולוגיה · חיפה</span>
         <span class="tag green">M.Teach הוראת ביולוגיה · אורנים</span>
@@ -796,7 +867,7 @@
 <!-- ===================== FAQ ===================== -->
 <section class="block" id="faq" aria-labelledby="faq-h">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <span class="eyebrow">שאלות נפוצות</span>
       <h2 id="faq-h">מה בדרך כלל <em>שואלים אותי</em></h2>
       <p class="lead">לא מצאתם תשובה? כתבו לי בוואטסאפ ל-<span class="num-ltr">052-429-5838</span> או באינסטגרם <span class="num-ltr">@bio_bagrut</span> ואחזור בהקדם.</p>
@@ -911,6 +982,22 @@
     // In RTL, "next" (visually right→left progression) advances by negative scrollLeft.
     next.addEventListener('click', function(){ track.scrollBy({ left: -step(), behavior: 'smooth' }); });
     prev.addEventListener('click', function(){ track.scrollBy({ left:  step(), behavior: 'smooth' }); });
+  })();
+
+  // Scroll-reveal — fade details in as they enter the viewport
+  (function(){
+    if (!document.documentElement.classList.contains('reveal-on')) return;
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function(el){ io.observe(el); });
   })();
 </script>
 </body>
