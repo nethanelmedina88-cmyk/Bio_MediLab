@@ -545,6 +545,28 @@
   .trust-badge svg{ color:var(--green); flex:0 0 auto }
   .book-hot{ position:absolute; z-index:2; inset-block-start:12px; inset-inline-start:12px; display:inline-flex; align-items:center; gap:5px; font-family:var(--head); font-weight:800; font-size:11px; padding:5px 11px; border-radius:999px; background:var(--amber); color:#3A2606; box-shadow:var(--shadow-sm) }
 
+  /* Book "what's inside" list */
+  .book-inside{ list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:7px }
+  .book-inside li{ position:relative; padding-inline-start:22px; font-size:13.5px; color:var(--ink-2); line-height:1.4 }
+  .book-inside li::before{ content:""; position:absolute; inset-inline-start:0; top:6px; width:8px; height:8px; border-radius:3px; background:var(--teal) }
+  .book-inside .k{ font-family:var(--head); font-weight:700; color:var(--ink) }
+
+  /* Countdown-to-bagrut band */
+  .countdown{ position:relative; overflow:hidden; color:#fff; background:linear-gradient(135deg, var(--teal), var(--teal-deep)); padding-block:clamp(28px,5vw,46px) }
+  .countdown::before{ content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(620px 320px at 92% -25%, color-mix(in srgb, var(--amber) 42%, transparent), transparent 60%) }
+  .countdown-inner{ position:relative; display:grid; grid-template-columns:1fr; gap:22px; align-items:center }
+  @media (min-width:920px){ .countdown-inner{ grid-template-columns:1.5fr auto auto } }
+  .cd-kicker{ display:inline-block; font-family:var(--head); font-weight:700; font-size:12px; letter-spacing:.03em; background:rgba(255,255,255,.16); padding:5px 12px; border-radius:999px; margin-bottom:11px }
+  .cd-text h3{ font-family:var(--head); font-weight:900; font-size:clamp(22px,3.6vw,33px); line-height:1.15; margin:0 }
+  .cd-text h3 span{ color:var(--amber); font-variant-numeric:tabular-nums }
+  .cd-text p{ margin:9px 0 0; color:rgba(255,255,255,.85); font-size:14.5px; max-width:46ch; line-height:1.55 }
+  .cd-timer{ display:flex; gap:10px }
+  .cd-box{ background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22); border-radius:14px; padding:12px 14px; min-width:64px; text-align:center }
+  .cd-box b{ display:block; font-family:var(--head); font-weight:900; font-size:clamp(24px,3.2vw,32px); line-height:1; font-variant-numeric:tabular-nums }
+  .cd-box span{ display:block; margin-top:4px; font-size:11px; color:rgba(255,255,255,.78) }
+  .countdown .btn-wa{ background:#fff; color:var(--teal-deep) }
+  .countdown .btn-wa:hover{ background:var(--amber-soft); color:#3A2606 }
+
   /* ===================== SCROLL REVEAL ===================== */
   .reveal{ transition:opacity .6s ease, transform .6s ease }
   .reveal-on .reveal{ opacity:0; transform:translateY(22px) }
@@ -824,6 +846,11 @@
         <div>
           <div class="btitle"><h3>ספר השאלות</h3><span class="bprice"><span class="num-ltr">₪149</span></span></div>
           <p>אוסף שאלות הבגרות המלא בנושאי הליבה וההעמקה, בהתאמה לתוכנית הלימודים החדשה בביולוגיה 5 יח״ל. מסודר לפי נושא ותת-נושא — תרגול ממוקד וסגירה של כל הפינות.</p>
+          <ul class="book-inside">
+            <li><span class="k">1,674</span> שאלות בגרות מקוריות</li>
+            <li>מחולק לפי נושא ותת-נושא</li>
+            <li>נושאי ליבה + העמקה</li>
+          </ul>
           <div class="btags"><span class="tag teal">מהדורה II</span><span class="tag green">1,674 שאלות</span></div>
           <a class="bsample" href="https://drive.google.com/file/d/19rAilF3kNRLQl1ml8ymjiPi3mtAuirt_/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך ספר השאלות">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
@@ -840,6 +867,11 @@
         <div>
           <div class="btitle"><h3>קטעי מחקר</h3><span class="bprice"><span class="num-ltr">₪95</span></span></div>
           <p>50 קטעי מחקר מתוך בחינות הבגרות בביולוגיה ל-5 יח״ל, עם שאלות מקוריות, הצעות לפתרון והסברים מפורטים. תרגול אמיתי לחלק קטעי המחקר בבחינה.</p>
+          <ul class="book-inside">
+            <li><span class="k">50</span> קטעי מחקר בפורמט בגרות</li>
+            <li>שאלות מקוריות לכל קטע</li>
+            <li>הצעות פתרון והסברים מלאים</li>
+          </ul>
           <div class="btags"><span class="tag green">פורמט בגרות</span><span class="tag">פתרונות מלאים</span></div>
           <a class="bsample" href="https://drive.google.com/file/d/1u3d0VqF9pE4NCx7NSHGdTgSstGxeryGZ/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך קטעי מחקר">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
@@ -856,6 +888,11 @@
         <div>
           <div class="btitle"><h3>מונחון</h3><span class="bprice"><span class="num-ltr">₪69</span></span></div>
           <p>מילון מודפס של 452 מושגים לתלמידי תיכון, מנוקד על ידי DICTA ומאויר. מחולק לפי נושאי תוכנית הלימודים החדשה — ליבה והעמקה. מהדורת תשפ״ו / 2026.</p>
+          <ul class="book-inside">
+            <li><span class="k">452</span> מושגים מנוקדים (DICTA)</li>
+            <li>לפי נושאי הליבה וההעמקה</li>
+            <li>מאויר, תמציתי וברור</li>
+          </ul>
           <div class="btags"><span class="tag teal">תשפ״ו · 2026</span><span class="tag green">452 מושגים</span></div>
           <a class="bsample" href="https://drive.google.com/file/d/1ntd_fbtv1c55AzVrG_ugBawurWVaxlf1/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך המונחון">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
@@ -999,6 +1036,26 @@
   </div>
 </section>
 
+<!-- ===================== COUNTDOWN TO BAGRUT ===================== -->
+<section class="countdown reveal" aria-labelledby="cd-h">
+  <div class="wrap countdown-inner">
+    <div class="cd-text">
+      <span class="cd-kicker">כל יום נחשב</span>
+      <h3 id="cd-h">נשארו <span id="cd-days">—</span> ימים לבגרות בביולוגיה</h3>
+      <p>מועד הקיץ מתקרב — אל תחכו לרגע האחרון. נבנה יחד תוכנית שתביא אתכם מוכנים ובטוחים.</p>
+    </div>
+    <div class="cd-timer" aria-hidden="true">
+      <div class="cd-box"><b id="cd-d">—</b><span>ימים</span></div>
+      <div class="cd-box"><b id="cd-hh">—</b><span>שעות</span></div>
+      <div class="cd-box"><b id="cd-mm">—</b><span>דקות</span></div>
+    </div>
+    <a class="btn btn-wa" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      קבעו שיעור עכשיו
+    </a>
+  </div>
+</section>
+
 <!-- ===================== FINAL CTA ===================== -->
 <section class="final" id="cta" aria-labelledby="cta-h">
   <div class="wrap final-inner">
@@ -1069,6 +1126,23 @@
 </a>
 
 <script>
+  // Countdown to the biology bagrut — UPDATE the date below to the official exam date
+  (function(){
+    var target = new Date('2027-05-20T09:00:00+03:00'); /* ← עדכן לתאריך המדויק של מועד הבגרות */
+    var elDays=document.getElementById('cd-days'), elD=document.getElementById('cd-d'),
+        elH=document.getElementById('cd-hh'), elM=document.getElementById('cd-mm');
+    if(!elD) return;
+    function pad(n){ return (n<10?'0':'')+n; }
+    function tick(){
+      var diff = target - new Date();
+      if(diff < 0) diff = 0;
+      var d=Math.floor(diff/86400000), h=Math.floor(diff%86400000/3600000), m=Math.floor(diff%3600000/60000);
+      elD.textContent=d; elH.textContent=pad(h); elM.textContent=pad(m);
+      if(elDays) elDays.textContent=d;
+    }
+    tick(); setInterval(tick, 30000);
+  })();
+
   // Testimonials carousel — prev/next scroll by one card (RTL-aware via scrollBy)
   (function(){
     var track = document.getElementById('testiTrack');
