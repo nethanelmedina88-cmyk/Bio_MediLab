@@ -522,6 +522,29 @@
   .statband-cell b em{ font-style:normal; color:var(--amber) }
   .statband-cell span{ display:block; margin-top:7px; font-size:11.5px; color:var(--ink-3); line-height:1.4 }
 
+  /* ===================== MARKETING ELEMENTS ===================== */
+  /* "Why me" value-prop strip */
+  .whyme{ padding-block:clamp(24px,4vw,38px); background:var(--bg-2); border-block:1px solid var(--line) }
+  .whyme-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px 16px }
+  @media (min-width:820px){ .whyme-grid{ grid-template-columns:repeat(4,1fr) } }
+  .whyme-item{ display:flex; align-items:flex-start; gap:12px }
+  .whyme-ic{ flex:0 0 42px; width:42px; height:42px; border-radius:12px; display:grid; place-items:center; background:var(--teal-soft); color:var(--teal-deep) }
+  .whyme-item b{ display:block; font-family:var(--head); font-weight:800; font-size:15.5px; line-height:1.2 }
+  .whyme-item span{ display:block; font-size:12.5px; color:var(--ink-3); margin-top:3px; line-height:1.4 }
+
+  /* Testimonial ratings */
+  .tstars{ color:var(--amber); letter-spacing:2px; font-size:14px; line-height:1 }
+  .rating-pill{ display:inline-flex; align-items:center; gap:10px; margin-top:16px; padding:8px 16px; border-radius:999px; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm) }
+  .rating-pill .rstars{ color:var(--amber); letter-spacing:2px; font-size:16px }
+  .rating-pill b{ font-family:var(--head); font-weight:900; font-size:18px }
+  .rating-pill em{ font-style:normal; font-size:12.5px; color:var(--ink-3) }
+
+  /* Book trust badges + bestseller ribbon */
+  .trust-row{ display:flex; flex-wrap:wrap; gap:10px; margin:2px 0 26px }
+  .trust-badge{ display:inline-flex; align-items:center; gap:7px; font-family:var(--head); font-weight:600; font-size:12.5px; color:var(--ink-2); background:var(--surface); border:1px solid var(--line); padding:8px 13px; border-radius:999px }
+  .trust-badge svg{ color:var(--green); flex:0 0 auto }
+  .book-hot{ position:absolute; z-index:2; inset-block-start:12px; inset-inline-start:12px; display:inline-flex; align-items:center; gap:5px; font-family:var(--head); font-weight:800; font-size:11px; padding:5px 11px; border-radius:999px; background:var(--amber); color:#3A2606; box-shadow:var(--shadow-sm) }
+
   /* ===================== SCROLL REVEAL ===================== */
   .reveal{ transition:opacity .6s ease, transform .6s ease }
   .reveal-on .reveal{ opacity:0; transform:translateY(22px) }
@@ -606,6 +629,176 @@
   </div>
 </section>
 
+<!-- ===================== WHY ME ===================== -->
+<section class="whyme" aria-label="למה ללמוד עם נתנאל">
+  <div class="wrap whyme-grid">
+    <div class="whyme-item reveal">
+      <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span>
+      <div><b>10 שנות ניסיון</b><span>בכיתה ובהוראה פרטית</span></div>
+    </div>
+    <div class="whyme-item reveal">
+      <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+      <div><b>חומרים משלי</b><span>3 ספרים ואפליקציה שכתבתי</span></div>
+    </div>
+    <div class="whyme-item reveal">
+      <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span>
+      <div><b>אסטרטגיות בגרות</b><span>שיטות פתרון לאמריקאיות ופתוחות</span></div>
+    </div>
+    <div class="whyme-item reveal">
+      <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 4.6a5.4 5.4 0 0 0-7.6 0l-.8.8-.8-.8a5.4 5.4 0 1 0-7.6 7.6l8.4 8.4 8.4-8.4a5.4 5.4 0 0 0 0-7.6z"/></svg></span>
+      <div><b>ליווי אישי</b><span>עד הבחינה, בגובה העיניים</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LESSONS ===================== -->
+<section class="block" id="lessons" aria-labelledby="lessons-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">שיעורים פרטיים</span>
+      <h2 id="lessons-h">שיעורים פרטיים ב<em>ביולוגיה וביוטכנולוגיה</em></h2>
+      <p class="lead">אחד-על-אחד או בקבוצות קטנות של עד 4 תלמידים. מקוון בזום עם לוח אינטראקטיבי, או פרונטלי במרכז ״כיוונים״ באשדוד. מתאים לכיתות י׳—י״ב, השלמת פערים, מגמות ביולוגיה וביוטכנולוגיה, וחזרה אינטנסיבית לפני הבגרות.</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="lcard reveal">
+        <div class="lh">
+          <span class="lnum">01</span>
+          <div><h3>אחד-על-אחד</h3><p class="lsub">שיעור פרטי מלא · מקוון או פרונטלי</p></div>
+        </div>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>תוכנית עבודה אישית על בסיס אבחון ראשוני</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>התאמה מדויקת לקצב ולסגנון של התלמיד</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>מעקב שבועי ותרגול מובנה בין השיעורים</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>דגש על אסטרטגיות פתרון לבגרות</li>
+        </ul>
+        <div class="lfoot"><span class="tag teal">מומלץ להשלמות ופערים</span></div>
+      </article>
+
+      <article class="lcard feat reveal">
+        <span class="ribbon">הכי פופולרי</span>
+        <div class="lh">
+          <span class="lnum">02</span>
+          <div><h3>קבוצה קטנה</h3><p class="lsub">עד 4 תלמידים · מפגש שבועי קבוע</p></div>
+        </div>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>לימוד דינמי לצד חברים ברמה דומה</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>מסלול סדור לאורך השנה — נושא אחרי נושא</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>תרגול מבחנים בפורמט בגרות אחת לחודש</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>עלות נמוכה יותר מפרטי — עם ליווי דומה</li>
+        </ul>
+        <div class="lfoot"><span class="tag green">המסלול המבוקש ביותר</span></div>
+      </article>
+
+      <article class="lcard reveal">
+        <div class="lh">
+          <span class="lnum">03</span>
+          <div><h3>מרתון בגרות</h3><p class="lsub">מפגשים אינטנסיביים לקראת מועד הבחינה</p></div>
+        </div>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>חזרה מקיפה על נושאי הליבה וההעמקה</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>פתרון בגרויות קודמות בליווי אישי</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>אסטרטגיות לשאלות אמריקאיות ופתוחות</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>מיקוד בנושאים ״חמים״ של המועד הקרוב</li>
+        </ul>
+        <div class="lfoot"><span class="tag">לקראת מועד הבגרות</span></div>
+      </article>
+    </div>
+
+    <div class="band">
+      <div>
+        <div class="bh">לא בטוחים מה הכי מתאים?</div>
+        <p>שיעור היכרות ראשון על חשבוני — נכיר, נאבחן ונתאים לכם מסלול, בלי שום התחייבות.</p>
+      </div>
+      <a class="btn btn-wa" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%20%D7%94%D7%99%D7%9B%D7%A8%D7%95%D7%AA" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        דברו איתי בוואטסאפ
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="block alt" id="testimonials" aria-labelledby="testi-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">ממליצים</span>
+      <h2 id="testi-h">מה תלמידים <em>כותבים עליי</em></h2>
+      <p class="lead">שמונה תלמידים שלי, בלשונם. הציון לצד כל אחד הוא מה שקיבל בבגרות — אבל הסיפור האמיתי הוא מה שכתבו מסביב. החליקו לצדדים כדי לקרוא עוד.</p>
+      <div class="rating-pill reveal"><span class="rstars" aria-hidden="true">★★★★★</span><b>5.0</b><em>מתוך 5 · 8 המלצות של תלמידים</em></div>
+    </div>
+
+    <div class="car-wrap reveal">
+      <ul class="car-track" id="testiTrack" tabindex="0" aria-label="המלצות תלמידים — ניתן לגלול לצדדים" style="list-style:none;margin-block:0;padding-block:6px 14px">
+        <li class="tcard">
+          <span class="grade"><span class="lbl">קיבלה</span>100</span>
+          <div class="tstars" aria-label="דירוג: 5 מתוך 5 כוכבים">★★★★★</div>
+          <div class="qm" aria-hidden="true">”</div>
+          <blockquote>נתנאל תמיד היה לי לאוזן קשבת, ולימוד איתו השאיר עליי חותם אמיתי. הוא ראה את התלמידים כבני אדם, לא רק כתלמידים בכיתה. קשוב, סבלני, בגובה העיניים — והיה מוכן לעצור ולהסביר שוב, גם מיליון פעם בדרכים שונות. ביולוגיה היה בין השיעורים היחידים שאהבתי, והוא הסיבה לכך.</blockquote>
+          <div class="who"><span class="av"><img src="rec-3.png" alt="יולי א׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">יולי א׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
+        </li>
+        <li class="tcard">
+          <span class="grade teal"><span class="lbl">קיבלה</span>98</span>
+          <div class="tstars" aria-label="דירוג: 5 מתוך 5 כוכבים">★★★★★</div>
+          <div class="qm" aria-hidden="true">”</div>
+          <blockquote>נתנאל מורה מעורר השראה בכמות תשומת הלב שהפגנת כלפי כל קושי שתלמידים חוו, ועזרת לנווט אותם להצלחה במבחנים. תמיד היה חשוב לך להרחיב את האופקים ולהציג את התוכן בביולוגיה בצורה הכי מעניינת — מצגות מרתקות, מחקרים וניסויים מדהימים. הפקנו המון ידע ובעיקר אין-סוף סקרנות.</blockquote>
+          <div class="who"><span class="av"><img src="rec-1.png" alt="דניאלה ק׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">דניאלה ק׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
+        </li>
+        <li class="tcard">
+          <span class="grade"><span class="lbl">קיבל</span>97</span>
+          <div class="tstars" aria-label="דירוג: 5 מתוך 5 כוכבים">★★★★★</div>
+          <div class="qm" aria-hidden="true">”</div>
+          <blockquote>נתנאל הוא הרבה יותר מסתם מורה, הוא המורה הטוב ביותר שזכיתי ללמוד אצלו. היכולת להפוך כל שיעור לחוויה היא נדירה, והוא דואג להעמיק ולהרחיב הרבה מעבר לתוכנית הלימודים — מתוך תשוקה אמיתית לידע. כשתלמיד שואל שאלה, הוא חוקר לעומק ומחזיר תשובה מפורטת וברורה.</blockquote>
+          <div class="who"><span class="av"><img src="rec-4.png" alt="איתן ו׳, תלמיד לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">איתן ו׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
+        </li>
+        <li class="tcard">
+          <span class="grade teal"><span class="lbl">קיבלה</span>98</span>
+          <div class="tstars" aria-label="דירוג: 5 מתוך 5 כוכבים">★★★★★</div>
+          <div class="qm" aria-hidden="true">”</div>
+          <blockquote>נתנאל הוא מורה מיוחד ולא שגרתי. מעורר השראה, נותן יחס אישי לכל תלמיד ומאמין בכולם. יודע למצוא את הדימוי המדויק שמסביר גם נושאים מורכבים, ומעביר שיעורים בצחוק ובחן. דורש מכל אחד את המקסימום ודוחף לקצה היכולת, כי ההצלחה שלנו חשובה לו.</blockquote>
+          <div class="who"><span class="av"><img src="rec-6.png" alt="רוני ב׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">רוני ב׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
+        </li>
+        <li class="tcard">
+          <span class="grade"><span class="lbl">קיבלה</span>95</span>
+          <div class="tstars" aria-label="דירוג: 5 מתוך 5 כוכבים">★★★★★</div>
+          <div class="qm" aria-hidden="true">”</div>
+          <blockquote>נתנאל מורה מעולה — גם בצורה שהוא מביא את הלימודים באופן נגיש עם דוגמאות מהעולם האמיתי להבנה עמוקה, וגם בגישה החיובית שלו. מעבר לחומר, הוא מורה שאוהב להרחיב את הידע, ומצית אהבה אצל התלמידים למדעים וביולוגיה בפרט.</blockquote>
+          <div class="who"><span class="av"><img src="rec-2.png" alt="שון ס׳, תלמיד לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">שון ס׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
+        </li>
+        <li class="tcard">
+          <span class="grade teal"><span class="lbl">קיבלה</span>88</span>
+          <div class="tstars" aria-label="דירוג: 5 מתוך 5 כוכבים">★★★★★</div>
+          <div class="qm" aria-hidden="true">”</div>
+          <blockquote>נתנאל היה הרבה מעבר למורה עבורי. כשהיה לי קשה בלימודים, הוא תמיד דאג להבין מה הקושי האמיתי, ולהתאים את העזרה למה שאני צריכה באותו רגע. בלי העזרה המקצועית שלו לא הייתי מגיעה לציון שהגעתי אליו, ובלי האמונה שלו לא הייתי נמצאת במקום שאליו שאפתי להגיע. הלוואי ולכל תלמיד יהיה נתנאל.</blockquote>
+          <div class="who"><span class="av"><img src="rec-5.png" alt="אמלי ס׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">אמלי ס׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
+        </li>
+        <li class="tcard">
+          <span class="grade"><span class="lbl">קיבלה</span>85</span>
+          <div class="tstars" aria-label="דירוג: 5 מתוך 5 כוכבים">★★★★★</div>
+          <div class="qm" aria-hidden="true">”</div>
+          <blockquote>בתחילת כיתה י״א הגעתי לכיתה של נתנאל. ביולוגיה הרגישה לי כמו שפה זרה, והמבחן הראשון שלי נגמר ב-40. החלטתי שאני שונאת את זה — אבל נתנאל לא הסכים. השלמנו ביחד יותר משנה של פערים. הוא היה איתי גם כשרציתי לוותר, האמין בי והזכיר לי שאני מסוגלת.</blockquote>
+          <div class="who"><span class="av"><img src="rec-7.png" alt="תהל ח׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">תהל ח׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
+        </li>
+        <li class="tcard">
+          <span class="grade teal"><span class="lbl">קיבל</span>89</span>
+          <div class="tstars" aria-label="דירוג: 5 מתוך 5 כוכבים">★★★★★</div>
+          <div class="qm" aria-hidden="true">”</div>
+          <blockquote>נתנאל תמיד דאג לי כמורה — שאני אצליח בצורה הכי טובה שאפשר. הסביר את החומר בצורה הכי ברורה, ותמיד ענה על שאלות גם מחוץ לשיעור. אצל נתנאל באמת אפשר להגיד: מי שרצה — הצליח. הוא דאג לנו גם לימודית וגם אישית, וחיבר בין תלמידים שמתקשים לחברים שלומדים טוב.</blockquote>
+          <div class="who"><span class="av"><img src="rec-8.png" alt="יונתן מ׳, תלמיד לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">יונתן מ׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
+        </li>
+      </ul>
+      <div class="car-ctrl">
+        <button class="car-btn" id="testiPrev" aria-label="ההמלצה הקודמת">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <button class="car-btn" id="testiNext" aria-label="ההמלצה הבאה">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== BOOKS ===================== -->
 <section class="block" id="books" aria-labelledby="books-h">
   <div class="wrap">
@@ -615,9 +808,16 @@
       <p class="lead">סדרה של ספרי עזר לבגרות בביולוגיה, מותאמים לתוכנית הלימודים החדשה לשנת תשפ״ו. כתובים, מאוירים ומנוקדים — נגישים, תמציתיים ומדויקים. אלה הכלים שאני עצמי משתמש בהם בשיעורים.</p>
     </div>
 
+    <div class="trust-row reveal">
+      <span class="trust-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>מותאם לתוכנית החדשה תשפ״ו</span>
+      <span class="trust-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>פרק לדוגמה חינם מכל ספר</span>
+      <span class="trust-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>רכישה והתאמה מהירה בוואטסאפ</span>
+    </div>
+
     <div class="grid-3">
       <article class="bcard reveal">
         <div class="bcover">
+          <span class="book-hot" aria-hidden="true">★ רב-מכר</span>
           <span class="badge">01</span>
           <img src="book-questions.png" alt="כריכת ספר השאלות — הכנה לבגרות בביולוגיה 5 יחידות" width="789" height="1113" loading="lazy" />
         </div>
@@ -715,147 +915,8 @@
   </div>
 </section>
 
-<!-- ===================== LESSONS ===================== -->
-<section class="block" id="lessons" aria-labelledby="lessons-h">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">שיעורים פרטיים</span>
-      <h2 id="lessons-h">שיעורים פרטיים ב<em>ביולוגיה וביוטכנולוגיה</em></h2>
-      <p class="lead">אחד-על-אחד או בקבוצות קטנות של עד 4 תלמידים. מקוון בזום עם לוח אינטראקטיבי, או פרונטלי במרכז ״כיוונים״ באשדוד. מתאים לכיתות י׳—י״ב, השלמת פערים, מגמות ביולוגיה וביוטכנולוגיה, וחזרה אינטנסיבית לפני הבגרות.</p>
-    </div>
-
-    <div class="grid-3">
-      <article class="lcard reveal">
-        <div class="lh">
-          <span class="lnum">01</span>
-          <div><h3>אחד-על-אחד</h3><p class="lsub">שיעור פרטי מלא · מקוון או פרונטלי</p></div>
-        </div>
-        <ul>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>תוכנית עבודה אישית על בסיס אבחון ראשוני</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>התאמה מדויקת לקצב ולסגנון של התלמיד</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>מעקב שבועי ותרגול מובנה בין השיעורים</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>דגש על אסטרטגיות פתרון לבגרות</li>
-        </ul>
-        <div class="lfoot"><span class="tag teal">מומלץ להשלמות ופערים</span></div>
-      </article>
-
-      <article class="lcard feat reveal">
-        <span class="ribbon">הכי פופולרי</span>
-        <div class="lh">
-          <span class="lnum">02</span>
-          <div><h3>קבוצה קטנה</h3><p class="lsub">עד 4 תלמידים · מפגש שבועי קבוע</p></div>
-        </div>
-        <ul>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>לימוד דינמי לצד חברים ברמה דומה</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>מסלול סדור לאורך השנה — נושא אחרי נושא</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>תרגול מבחנים בפורמט בגרות אחת לחודש</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>עלות נמוכה יותר מפרטי — עם ליווי דומה</li>
-        </ul>
-        <div class="lfoot"><span class="tag green">המסלול המבוקש ביותר</span></div>
-      </article>
-
-      <article class="lcard reveal">
-        <div class="lh">
-          <span class="lnum">03</span>
-          <div><h3>מרתון בגרות</h3><p class="lsub">מפגשים אינטנסיביים לקראת מועד הבחינה</p></div>
-        </div>
-        <ul>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>חזרה מקיפה על נושאי הליבה וההעמקה</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>פתרון בגרויות קודמות בליווי אישי</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>אסטרטגיות לשאלות אמריקאיות ופתוחות</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>מיקוד בנושאים ״חמים״ של המועד הקרוב</li>
-        </ul>
-        <div class="lfoot"><span class="tag">לקראת מועד הבגרות</span></div>
-      </article>
-    </div>
-
-    <div class="band">
-      <div>
-        <div class="bh">לא בטוחים מה הכי מתאים?</div>
-        <p>שיעור היכרות ראשון על חשבוני — נכיר, נאבחן ונתאים לכם מסלול, בלי שום התחייבות.</p>
-      </div>
-      <a class="btn btn-wa" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%20%D7%94%D7%99%D7%9B%D7%A8%D7%95%D7%AA" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        דברו איתי בוואטסאפ
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== TESTIMONIALS ===================== -->
-<section class="block" id="testimonials" aria-labelledby="testi-h">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">ממליצים</span>
-      <h2 id="testi-h">מה תלמידים <em>כותבים עליי</em></h2>
-      <p class="lead">שמונה תלמידים שלי, בלשונם. הציון לצד כל אחד הוא מה שקיבל בבגרות — אבל הסיפור האמיתי הוא מה שכתבו מסביב. החליקו לצדדים כדי לקרוא עוד.</p>
-    </div>
-
-    <div class="car-wrap reveal">
-      <ul class="car-track" id="testiTrack" tabindex="0" aria-label="המלצות תלמידים — ניתן לגלול לצדדים" style="list-style:none;margin-block:0;padding-block:6px 14px">
-        <li class="tcard">
-          <span class="grade"><span class="lbl">קיבלה</span>100</span>
-          <div class="qm" aria-hidden="true">”</div>
-          <blockquote>נתנאל תמיד היה לי לאוזן קשבת, ולימוד איתו השאיר עליי חותם אמיתי. הוא ראה את התלמידים כבני אדם, לא רק כתלמידים בכיתה. קשוב, סבלני, בגובה העיניים — והיה מוכן לעצור ולהסביר שוב, גם מיליון פעם בדרכים שונות. ביולוגיה היה בין השיעורים היחידים שאהבתי, והוא הסיבה לכך.</blockquote>
-          <div class="who"><span class="av"><img src="rec-3.png" alt="יולי א׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">יולי א׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
-        </li>
-        <li class="tcard">
-          <span class="grade teal"><span class="lbl">קיבלה</span>98</span>
-          <div class="qm" aria-hidden="true">”</div>
-          <blockquote>נתנאל מורה מעורר השראה בכמות תשומת הלב שהפגנת כלפי כל קושי שתלמידים חוו, ועזרת לנווט אותם להצלחה במבחנים. תמיד היה חשוב לך להרחיב את האופקים ולהציג את התוכן בביולוגיה בצורה הכי מעניינת — מצגות מרתקות, מחקרים וניסויים מדהימים. הפקנו המון ידע ובעיקר אין-סוף סקרנות.</blockquote>
-          <div class="who"><span class="av"><img src="rec-1.png" alt="דניאלה ק׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">דניאלה ק׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
-        </li>
-        <li class="tcard">
-          <span class="grade"><span class="lbl">קיבל</span>97</span>
-          <div class="qm" aria-hidden="true">”</div>
-          <blockquote>נתנאל הוא הרבה יותר מסתם מורה, הוא המורה הטוב ביותר שזכיתי ללמוד אצלו. היכולת להפוך כל שיעור לחוויה היא נדירה, והוא דואג להעמיק ולהרחיב הרבה מעבר לתוכנית הלימודים — מתוך תשוקה אמיתית לידע. כשתלמיד שואל שאלה, הוא חוקר לעומק ומחזיר תשובה מפורטת וברורה.</blockquote>
-          <div class="who"><span class="av"><img src="rec-4.png" alt="איתן ו׳, תלמיד לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">איתן ו׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
-        </li>
-        <li class="tcard">
-          <span class="grade teal"><span class="lbl">קיבלה</span>98</span>
-          <div class="qm" aria-hidden="true">”</div>
-          <blockquote>נתנאל הוא מורה מיוחד ולא שגרתי. מעורר השראה, נותן יחס אישי לכל תלמיד ומאמין בכולם. יודע למצוא את הדימוי המדויק שמסביר גם נושאים מורכבים, ומעביר שיעורים בצחוק ובחן. דורש מכל אחד את המקסימום ודוחף לקצה היכולת, כי ההצלחה שלנו חשובה לו.</blockquote>
-          <div class="who"><span class="av"><img src="rec-6.png" alt="רוני ב׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">רוני ב׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
-        </li>
-        <li class="tcard">
-          <span class="grade"><span class="lbl">קיבלה</span>95</span>
-          <div class="qm" aria-hidden="true">”</div>
-          <blockquote>נתנאל מורה מעולה — גם בצורה שהוא מביא את הלימודים באופן נגיש עם דוגמאות מהעולם האמיתי להבנה עמוקה, וגם בגישה החיובית שלו. מעבר לחומר, הוא מורה שאוהב להרחיב את הידע, ומצית אהבה אצל התלמידים למדעים וביולוגיה בפרט.</blockquote>
-          <div class="who"><span class="av"><img src="rec-2.png" alt="שון ס׳, תלמיד לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">שון ס׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
-        </li>
-        <li class="tcard">
-          <span class="grade teal"><span class="lbl">קיבלה</span>88</span>
-          <div class="qm" aria-hidden="true">”</div>
-          <blockquote>נתנאל היה הרבה מעבר למורה עבורי. כשהיה לי קשה בלימודים, הוא תמיד דאג להבין מה הקושי האמיתי, ולהתאים את העזרה למה שאני צריכה באותו רגע. בלי העזרה המקצועית שלו לא הייתי מגיעה לציון שהגעתי אליו, ובלי האמונה שלו לא הייתי נמצאת במקום שאליו שאפתי להגיע. הלוואי ולכל תלמיד יהיה נתנאל.</blockquote>
-          <div class="who"><span class="av"><img src="rec-5.png" alt="אמלי ס׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">אמלי ס׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
-        </li>
-        <li class="tcard">
-          <span class="grade"><span class="lbl">קיבלה</span>85</span>
-          <div class="qm" aria-hidden="true">”</div>
-          <blockquote>בתחילת כיתה י״א הגעתי לכיתה של נתנאל. ביולוגיה הרגישה לי כמו שפה זרה, והמבחן הראשון שלי נגמר ב-40. החלטתי שאני שונאת את זה — אבל נתנאל לא הסכים. השלמנו ביחד יותר משנה של פערים. הוא היה איתי גם כשרציתי לוותר, האמין בי והזכיר לי שאני מסוגלת.</blockquote>
-          <div class="who"><span class="av"><img src="rec-7.png" alt="תהל ח׳, תלמידה לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">תהל ח׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
-        </li>
-        <li class="tcard">
-          <span class="grade teal"><span class="lbl">קיבל</span>89</span>
-          <div class="qm" aria-hidden="true">”</div>
-          <blockquote>נתנאל תמיד דאג לי כמורה — שאני אצליח בצורה הכי טובה שאפשר. הסביר את החומר בצורה הכי ברורה, ותמיד ענה על שאלות גם מחוץ לשיעור. אצל נתנאל באמת אפשר להגיד: מי שרצה — הצליח. הוא דאג לנו גם לימודית וגם אישית, וחיבר בין תלמידים שמתקשים לחברים שלומדים טוב.</blockquote>
-          <div class="who"><span class="av"><img src="rec-8.png" alt="יונתן מ׳, תלמיד לשעבר" width="50" height="50" loading="lazy" /></span><div><div class="nm">יונתן מ׳.</div><div class="rl">ביולוגיה · 5 יח״ל</div></div></div>
-        </li>
-      </ul>
-      <div class="car-ctrl">
-        <button class="car-btn" id="testiPrev" aria-label="ההמלצה הקודמת">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-        </button>
-        <button class="car-btn" id="testiNext" aria-label="ההמלצה הבאה">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== ABOUT ===================== -->
-<section class="block alt" id="about" aria-labelledby="about-h">
+<section class="block" id="about" aria-labelledby="about-h">
   <div class="wrap about">
     <div class="about-card reveal">
       <div class="frame">
@@ -901,7 +962,7 @@
 </section>
 
 <!-- ===================== FAQ ===================== -->
-<section class="block" id="faq" aria-labelledby="faq-h">
+<section class="block alt" id="faq" aria-labelledby="faq-h">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">שאלות נפוצות</span>
