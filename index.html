@@ -344,13 +344,12 @@
   /* ===================== BOOKS ===================== */
   .bcard{ display:flex; flex-direction:column; gap:14px }
   .bcover{
-    position:relative; aspect-ratio:789/1113; border-radius:12px; overflow:hidden;
-    background:var(--bg-2); border:1px solid var(--line);
-    box-shadow:var(--shadow-md), inset 11px 0 16px -10px rgba(0,0,0,.16);
+    position:relative; aspect-ratio:5/6; border-radius:16px; overflow:hidden;
+    background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-sm);
     transition:transform .25s ease, box-shadow .25s ease;
   }
-  .bcard:hover .bcover{ transform:translateY(-4px) rotate(-.5deg); box-shadow:var(--shadow-lg), inset 11px 0 16px -10px rgba(0,0,0,.16) }
-  .bcover img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
+  .bcard:hover .bcover{ transform:translateY(-5px); box-shadow:var(--shadow-md) }
+  .bcover img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain }
   .bcover .badge{
     position:absolute; z-index:2; inset-block-start:12px; inset-inline-end:12px;
     background:color-mix(in srgb, var(--ink) 80%, transparent); color:#fff;
@@ -840,18 +839,17 @@
       <article class="bcard reveal">
         <div class="bcover">
           <span class="book-hot" aria-hidden="true">★ רב-מכר</span>
-          <span class="badge">01</span>
-          <img src="book-questions.png" alt="כריכת ספר השאלות — הכנה לבגרות בביולוגיה 5 יחידות" width="789" height="1113" loading="lazy" />
+          <img src="book-questions.jpg" alt="כריכת ספר השאלות — הכנה לבגרות בביולוגיה 5 יחידות" width="700" height="846" loading="lazy" />
         </div>
         <div>
           <div class="btitle"><h3>ספר השאלות</h3><span class="bprice"><span class="num-ltr">₪149</span></span></div>
           <p>אוסף שאלות הבגרות המלא בנושאי הליבה וההעמקה, בהתאמה לתוכנית הלימודים החדשה בביולוגיה 5 יח״ל. מסודר לפי נושא ותת-נושא — תרגול ממוקד וסגירה של כל הפינות.</p>
           <ul class="book-inside">
-            <li><span class="k">1,674</span> שאלות בגרות מקוריות</li>
+            <li><span class="k">1,706</span> שאלות בגרות מקוריות</li>
             <li>מחולק לפי נושא ותת-נושא</li>
             <li>נושאי ליבה + העמקה</li>
           </ul>
-          <div class="btags"><span class="tag teal">מהדורה II</span><span class="tag green">1,674 שאלות</span></div>
+          <div class="btags"><span class="tag teal">מהדורה II</span><span class="tag green">1,706 שאלות</span></div>
           <a class="bsample" href="https://drive.google.com/file/d/19rAilF3kNRLQl1ml8ymjiPi3mtAuirt_/view" target="_blank" rel="noopener" aria-label="הורדת פרק לדוגמה מתוך ספר השאלות">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
             פרק לדוגמה
@@ -861,8 +859,7 @@
 
       <article class="bcard reveal">
         <div class="bcover">
-          <span class="badge">02</span>
-          <img src="book-research.png" alt="כריכת הספר 50 קטעי מחקר בביולוגיה לבגרות" width="789" height="1113" loading="lazy" />
+          <img src="book-research.jpg" alt="כריכת הספר 50 קטעי מחקר בביולוגיה לבגרות" width="700" height="930" loading="lazy" />
         </div>
         <div>
           <div class="btitle"><h3>קטעי מחקר</h3><span class="bprice"><span class="num-ltr">₪95</span></span></div>
@@ -882,8 +879,7 @@
 
       <article class="bcard reveal">
         <div class="bcover">
-          <span class="badge">03</span>
-          <img src="book-glossary.png" alt="כריכת המונחון — מילון מונחים בביולוגיה לתיכון" width="789" height="1113" loading="lazy" />
+          <img src="book-glossary.jpg" alt="כריכת המונחון — מילון מונחים בביולוגיה לתיכון" width="700" height="847" loading="lazy" />
         </div>
         <div>
           <div class="btitle"><h3>מונחון</h3><span class="bprice"><span class="num-ltr">₪69</span></span></div>
@@ -969,7 +965,7 @@
       <span class="eyebrow">על נתנאל</span>
       <h2 id="about-h">נעים להכיר — אני <em>נתנאל</em></h2>
       <p>מורה לביולוגיה ולביוטכנולוגיה עם 10 שנות ניסיון בתיכון, מגיש תלמידים לבגרויות בביולוגיה (5 יח״ל) ובביוטכנולוגיה (10 יח״ל). מעביר שיעורים פרטיים אחד-על-אחד או בקבוצות קטנות — מקוון בזום או פרונטלי במרכז ״כיוונים״ באשדוד. אני מאמין שלכל תלמיד יש דרך משלו להבין, והתפקיד שלי הוא למצוא אותה.</p>
-      <p>לצד ההוראה כתבתי שלושה ספרי עזר שמסודרים בדיוק כמו שתוכנית הלימודים דורשת: <strong>ספר השאלות</strong> עם מעל 1,600 שאלות בגרות, <strong>קטעי מחקר</strong> בפורמט בגרות עם פתרונות, ו<strong>מונחון</strong> עם 452 מושגים — כלים שאני משתמש בהם בשיעורים עצמם.</p>
+      <p>לצד ההוראה כתבתי שלושה ספרי עזר שמסודרים בדיוק כמו שתוכנית הלימודים דורשת: <strong>ספר השאלות</strong> עם מעל 1,700 שאלות בגרות, <strong>קטעי מחקר</strong> בפורמט בגרות עם פתרונות, ו<strong>מונחון</strong> עם 452 מושגים — כלים שאני משתמש בהם בשיעורים עצמם.</p>
       <div class="statband">
         <div class="statband-cell"><b>94</b><span>ציון ממוצע בבגרות אצל הממליצים</span></div>
         <div class="statband-cell"><b>100</b><span>הציון הגבוה ביותר שהושג</span></div>
