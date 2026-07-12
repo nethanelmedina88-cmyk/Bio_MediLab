@@ -566,6 +566,22 @@
   .countdown .btn-wa{ background:#fff; color:var(--teal-deep) }
   .countdown .btn-wa:hover{ background:var(--amber-soft); color:#3A2606 }
 
+  /* Cover zoom button + lightbox */
+  .bzoom{ position:absolute; z-index:3; inset-block-end:10px; inset-inline-end:10px; width:38px; height:38px; border-radius:50%;
+    display:grid; place-items:center; background:rgba(17,36,31,.72); color:#fff; border:1px solid rgba(255,255,255,.25);
+    opacity:0; transform:translateY(6px); transition:opacity .2s ease, transform .2s ease, background .2s ease; backdrop-filter:blur(4px); cursor:pointer }
+  .bcard:hover .bzoom, .bzoom:focus-visible{ opacity:1; transform:none }
+  .bzoom:hover{ background:var(--teal) }
+  @media (hover:none){ .bzoom{ opacity:1; transform:none } }
+  .lightbox{ position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:24px;
+    background:rgba(10,20,17,.82); backdrop-filter:blur(6px) }
+  .lightbox.open{ display:flex }
+  .lightbox img{ max-width:min(92vw,560px); max-height:90vh; border-radius:14px; box-shadow:0 30px 80px -20px rgba(0,0,0,.6) }
+  .lb-close{ position:absolute; top:18px; inset-inline-end:18px; width:46px; height:46px; border-radius:50%;
+    background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.3); font-size:26px; line-height:1;
+    display:grid; place-items:center; cursor:pointer }
+  .lb-close:hover{ background:rgba(255,255,255,.26) }
+
   /* ===================== SCROLL REVEAL ===================== */
   .reveal{ transition:opacity .6s ease, transform .6s ease }
   .reveal-on .reveal{ opacity:0; transform:translateY(22px) }
@@ -638,7 +654,7 @@
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1 class="display" id="hero-h">בגרות בביולוגיה —<br><em>קצר, ברור, ולעניין.</em></h1>
-      <p class="hero-sub">שיעורים פרטיים והכנה לבגרות בביולוגיה (5 יח״ל) ובביוטכנולוגיה (10 יח״ל) עם נתנאל מדינה — מורה עם 10 שנות ניסיון בתיכון. אחד-על-אחד או בקבוצה קטנה, מקוון בזום או פרונטלי באשדוד. ובנוסף — שלושה ספרי עזר שכתבתי בעצמי.</p>
+      <p class="hero-sub">שיעורים פרטיים והכנה לבגרות בביולוגיה (5 יח״ל) ובביוטכנולוגיה (10 יח״ל) עם נתנאל מדינה — מורה עם 10 שנות ניסיון בהכנה לבגרות. אחד-על-אחד או בקבוצה קטנה, מקוון בזום או פרונטלי באשדוד. ובנוסף — שלושה ספרי עזר שכתבתי בעצמי.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A9%D7%99%D7%A2%D7%95%D7%A8%20%D7%94%D7%99%D7%9B%D7%A8%D7%95%D7%AA" target="_blank" rel="noopener">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -655,7 +671,7 @@
   <div class="wrap whyme-grid">
     <div class="whyme-item reveal">
       <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span>
-      <div><b>10 שנות ניסיון</b><span>בכיתה ובהוראה פרטית</span></div>
+      <div><b>10 שנות ניסיון</b><span>בהכנה לבגרות בביולוגיה וביוטכנולוגיה</span></div>
     </div>
     <div class="whyme-item reveal">
       <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
@@ -840,6 +856,7 @@
         <div class="bcover">
           <span class="book-hot" aria-hidden="true">★ רב-מכר</span>
           <img src="book-questions.jpg" alt="כריכת ספר השאלות — הכנה לבגרות בביולוגיה 5 יחידות" width="700" height="846" loading="lazy" />
+          <button class="bzoom" data-full="book-questions-lg.jpg" data-alt="כריכת ספר השאלות — הכנה לבגרות בביולוגיה 5 יח״ל" aria-label="הגדלת כריכת ספר השאלות"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
         </div>
         <div>
           <div class="btitle"><h3>ספר השאלות</h3><span class="bprice"><span class="num-ltr">₪149</span></span></div>
@@ -860,6 +877,7 @@
       <article class="bcard reveal">
         <div class="bcover">
           <img src="book-research.jpg" alt="כריכת הספר 50 קטעי מחקר בביולוגיה לבגרות" width="700" height="930" loading="lazy" />
+          <button class="bzoom" data-full="book-research-lg.jpg" data-alt="כריכת הספר 50 קטעי מחקר בביולוגיה לבגרות" aria-label="הגדלת כריכת קטעי מחקר"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
         </div>
         <div>
           <div class="btitle"><h3>קטעי מחקר</h3><span class="bprice"><span class="num-ltr">₪95</span></span></div>
@@ -880,6 +898,7 @@
       <article class="bcard reveal">
         <div class="bcover">
           <img src="book-glossary.jpg" alt="כריכת המונחון — מילון מונחים בביולוגיה לתיכון" width="700" height="847" loading="lazy" />
+          <button class="bzoom" data-full="book-glossary-lg.jpg" data-alt="כריכת המונחון — מילון מונחים בביולוגיה לתיכון" aria-label="הגדלת כריכת המונחון"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
         </div>
         <div>
           <div class="btitle"><h3>מונחון</h3><span class="bprice"><span class="num-ltr">₪69</span></span></div>
@@ -957,28 +976,28 @@
       </div>
       <div class="about-meta">
         <div class="nm">נתנאל יוחאי מדינה</div>
-        <div class="dg">B.Sc · M.Teach · M.Sc<br>10 שנות הוראה בתיכון</div>
+        <div class="dg">B.Sc · M.Teach · M.Sc<br>10 שנות ניסיון בהכנה לבגרות</div>
       </div>
     </div>
 
     <div class="about-body reveal">
       <span class="eyebrow">על נתנאל</span>
       <h2 id="about-h">נעים להכיר — אני <em>נתנאל</em></h2>
-      <p>מורה לביולוגיה ולביוטכנולוגיה עם 10 שנות ניסיון בתיכון, מגיש תלמידים לבגרויות בביולוגיה (5 יח״ל) ובביוטכנולוגיה (10 יח״ל). מעביר שיעורים פרטיים אחד-על-אחד או בקבוצות קטנות — מקוון בזום או פרונטלי במרכז ״כיוונים״ באשדוד. אני מאמין שלכל תלמיד יש דרך משלו להבין, והתפקיד שלי הוא למצוא אותה.</p>
+      <p>מורה לביולוגיה ולביוטכנולוגיה עם 10 שנות ניסיון בהכנה לבגרות בביולוגיה (5 יח״ל) ובביוטכנולוגיה (10 יח״ל). מעביר שיעורים פרטיים אחד-על-אחד או בקבוצות קטנות — מקוון בזום או פרונטלי במרכז ״כיוונים״ באשדוד. אני מאמין שלכל תלמיד יש דרך משלו להבין, והתפקיד שלי הוא למצוא אותה.</p>
       <p>לצד ההוראה כתבתי שלושה ספרי עזר שמסודרים בדיוק כמו שתוכנית הלימודים דורשת: <strong>ספר השאלות</strong> עם מעל 1,700 שאלות בגרות, <strong>קטעי מחקר</strong> בפורמט בגרות עם פתרונות, ו<strong>מונחון</strong> עם 452 מושגים — כלים שאני משתמש בהם בשיעורים עצמם.</p>
       <div class="statband">
         <div class="statband-cell"><b>94</b><span>ציון ממוצע בבגרות אצל הממליצים</span></div>
         <div class="statband-cell"><b>100</b><span>הציון הגבוה ביותר שהושג</span></div>
-        <div class="statband-cell"><b>10<em>+</em></b><span>שנות הוראה בתיכון</span></div>
-        <div class="statband-cell"><b>3</b><span>תארים אקדמיים · חיפה · אורנים · ויצמן</span></div>
+        <div class="statband-cell"><b>10<em>+</em></b><span>שנות ניסיון בהכנה לבגרות</span></div>
+        <div class="statband-cell"><b>3</b><span>תארים אקדמיים · חיפה · אורנים · מכון ויצמן</span></div>
       </div>
       <div class="about-tags">
         <span class="tag teal">B.Sc ביולוגיה · חיפה</span>
         <span class="tag green">M.Teach הוראת ביולוגיה · אורנים</span>
-        <span class="tag teal">M.Sc הוראת המדעים · ויצמן</span>
+        <span class="tag teal">M.Sc הוראת המדעים · מכון ויצמן למדע</span>
         <span class="tag">ביולוגיה · 5 יח״ל</span>
         <span class="tag green">ביוטכנולוגיה · 10 יח״ל</span>
-        <span class="tag">10 שנות הוראה בתיכון</span>
+        <span class="tag">10 שנות ניסיון בהכנה לבגרות</span>
       </div>
       <div class="about-cta">
         <a class="btn btn-wa" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">
@@ -1115,6 +1134,12 @@
   </div>
 </footer>
 
+<!-- ===================== COVER LIGHTBOX ===================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="תצוגת כריכה מוגדלת">
+  <button class="lb-close" id="lbClose" aria-label="סגירת התצוגה">×</button>
+  <img id="lbImg" src="" alt="" />
+</div>
+
 <!-- ===================== FLOATING WHATSAPP ===================== -->
 <a class="fab" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener" aria-label="פתיחת שיחת וואטסאפ עם נתנאל">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1137,6 +1162,19 @@
       if(elDays) elDays.textContent=d;
     }
     tick(); setInterval(tick, 30000);
+  })();
+
+  // Book-cover lightbox — click a cover's zoom button to enlarge
+  (function(){
+    var lb=document.getElementById('lightbox'), img=document.getElementById('lbImg'), closeBtn=document.getElementById('lbClose');
+    if(!lb) return;
+    var lastFocus=null;
+    function open(src,alt){ lastFocus=document.activeElement; img.setAttribute('src',src); img.setAttribute('alt',alt||''); lb.classList.add('open'); document.body.style.overflow='hidden'; closeBtn.focus(); }
+    function close(){ lb.classList.remove('open'); img.setAttribute('src',''); document.body.style.overflow=''; if(lastFocus && lastFocus.focus) lastFocus.focus(); }
+    document.querySelectorAll('.bzoom').forEach(function(b){ b.addEventListener('click', function(){ open(b.getAttribute('data-full'), b.getAttribute('data-alt')); }); });
+    closeBtn.addEventListener('click', close);
+    lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('open')) close(); });
   })();
 
   // Testimonials carousel — prev/next scroll by one card (RTL-aware via scrollBy)
