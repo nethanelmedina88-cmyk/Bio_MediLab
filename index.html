@@ -647,6 +647,42 @@
   .reveal-on .bento .reveal:nth-child(5){ transition-delay:.28s }
   .bcard:hover .bcover{ transform:perspective(900px) rotateY(-6deg) translateY(-5px) }
 
+  /* ===================== TRY-ME QUIZ ===================== */
+  .quiz{ background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:clamp(20px,3vw,30px); box-shadow:var(--shadow-md); max-width:760px }
+  .quiz-q{ font-family:var(--head); font-weight:800; font-size:clamp(17px,2.4vw,20px); line-height:1.4; margin-bottom:16px }
+  .quiz-opts{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px }
+  .qopt{ width:100%; text-align:start; font-family:var(--sans); font-size:15px; color:var(--ink); background:var(--bg-2);
+    border:1.5px solid var(--line); border-radius:12px; padding:13px 15px; cursor:pointer; min-height:48px;
+    transition:background .18s ease, border-color .18s ease; display:flex; gap:10px; align-items:flex-start }
+  .qopt:hover:not(:disabled){ border-color:var(--teal); background:var(--teal-soft) }
+  .qopt:disabled{ cursor:default }
+  .qopt.correct{ border-color:var(--green); background:var(--green-soft) }
+  .qopt.wrong{ border-color:#D0533E; background:color-mix(in srgb,#D0533E 10%, #fff) }
+  .qopt .qmark{ flex:0 0 22px; width:22px; height:22px; border-radius:6px; display:grid; place-items:center; font-family:var(--head); font-weight:700; font-size:12px; margin-top:1px; background:var(--surface); border:1px solid var(--line-2) }
+  .qopt.correct .qmark{ background:var(--green); color:#fff; border-color:var(--green) }
+  .qopt.wrong .qmark{ background:#D0533E; color:#fff; border-color:#D0533E }
+  .quiz-fb{ margin-top:16px; padding:14px 16px; border-radius:12px; font-size:14.5px; line-height:1.6;
+    background:var(--teal-soft); border-inline-start:3px solid var(--teal); color:var(--ink) }
+  .quiz-fb.ok{ background:var(--green-soft); border-inline-start-color:var(--green) }
+  .quiz-fb b{ font-family:var(--head) }
+  .quiz-cta{ margin-top:16px; display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px }
+  .quiz-cta p{ margin:0; font-size:14.5px; color:var(--ink-2); flex:1 1 220px }
+
+  /* ===================== WHATSAPP BUILDER ===================== */
+  .wabuilder{ margin-top:24px; padding:clamp(20px,3vw,28px); border-radius:20px; background:linear-gradient(135deg,var(--teal-soft),var(--amber-soft)); border:1px solid #CFE2DC }
+  .wab-head{ margin-bottom:16px }
+  .wab-head b{ font-family:var(--head); font-weight:800; font-size:18px; display:block; color:var(--teal-deep) }
+  .wab-head span{ font-size:14px; color:var(--ink-2) }
+  .wab-group{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:12px }
+  .wab-lbl{ font-family:var(--head); font-weight:700; font-size:13px; color:var(--ink-2); min-width:48px }
+  .wab-chips{ display:flex; flex-wrap:wrap; gap:8px }
+  .chip{ font-family:var(--head); font-weight:600; font-size:13.5px; padding:8px 14px; border-radius:999px; cursor:pointer;
+    background:var(--surface); border:1.5px solid var(--line); color:var(--ink-2); min-height:40px; transition:background .15s ease, border-color .15s ease, color .15s ease }
+  .chip:hover{ border-color:var(--teal) }
+  .chip[aria-pressed="true"]{ background:var(--teal); border-color:var(--teal); color:#fff }
+  .wab-go{ margin-top:8px }
+  .wab-preview{ margin:12px 0 0; font-size:13px; color:var(--ink-3); line-height:1.5; font-style:italic }
+
   /* ===================== MOTION ===================== */
   @media (prefers-reduced-motion:reduce){
     *{ animation:none !important; transition:none !important; scroll-behavior:auto !important }
@@ -800,15 +836,64 @@
       </article>
     </div>
 
-    <div class="band">
-      <div>
-        <div class="bh">לא בטוחים מה הכי מתאים?</div>
-        <p>שיעור היכרות ראשון על חשבוני — נכיר, נאבחן ונתאים לכם מסלול, בלי שום התחייבות.</p>
+    <div class="wabuilder reveal">
+      <div class="wab-head">
+        <b>לא בטוחים מה מתאים? בונים פנייה ב-30 שניות</b>
+        <span>בחרו את מה שמתאים לכם — ותקבלו הודעת וואטסאפ מוכנה. שיעור היכרות ראשון תמיד על חשבוני.</span>
       </div>
-      <a class="btn btn-wa" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%20%D7%94%D7%99%D7%9B%D7%A8%D7%95%D7%AA" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        דברו איתי בוואטסאפ
+      <div class="wab-group">
+        <span class="wab-lbl">מסלול</span>
+        <div class="wab-chips">
+          <button type="button" class="chip" data-k="track" data-v="שיעור פרטי אחד-על-אחד" aria-pressed="true">אחד-על-אחד</button>
+          <button type="button" class="chip" data-k="track" data-v="קבוצה קטנה">קבוצה קטנה</button>
+          <button type="button" class="chip" data-k="track" data-v="מרתון בגרות">מרתון בגרות</button>
+        </div>
+      </div>
+      <div class="wab-group">
+        <span class="wab-lbl">איך</span>
+        <div class="wab-chips">
+          <button type="button" class="chip" data-k="mode" data-v="מקוון בזום" aria-pressed="true">מקוון בזום</button>
+          <button type="button" class="chip" data-k="mode" data-v="פרונטלי באשדוד">פרונטלי באשדוד</button>
+        </div>
+      </div>
+      <div class="wab-group">
+        <span class="wab-lbl">כיתה</span>
+        <div class="wab-chips">
+          <button type="button" class="chip" data-k="grade" data-v="כיתה י׳">י׳</button>
+          <button type="button" class="chip" data-k="grade" data-v="כיתה י״א" aria-pressed="true">י״א</button>
+          <button type="button" class="chip" data-k="grade" data-v="כיתה י״ב">י״ב</button>
+        </div>
+      </div>
+      <a class="btn btn-wa wab-go" id="wabGo" href="https://wa.me/972524295838" target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        שליחת הפנייה בוואטסאפ
       </a>
+      <p class="wab-preview" id="wabPreview"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRY-ME QUIZ ===================== -->
+<section class="block" id="tryme" aria-labelledby="tryme-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">נסו אותי</span>
+      <h2 id="tryme-h">שאלת בגרות אמיתית — <em>ננסה?</em></h2>
+      <p class="lead">שאלה אמריקאית מנושא מערכת החיסון. בחרו תשובה — ותקבלו בדיוק את סוג המשוב שאני נותן בשיעור: לא רק ״נכון/לא נכון״, אלא איך כל מסיח מנסה להטעות.</p>
+    </div>
+    <div class="quiz reveal">
+      <div class="quiz-q">איזה מהמשפטים מתאר נכון את ההבדל בין התגובה החיסונית הראשונית לשניונית?</div>
+      <ul class="quiz-opts">
+        <li><button type="button" class="qopt" data-correct="false" data-fb="כמעט — אבל הפוך. דווקא התגובה השניונית היא המהירה והחזקה. זה מסיח מסוג ״היפוך מגמה״ — מזהים אותו ומחזירים ללוגיקה הנכונה."><span class="qmark">א</span><span>התגובה הראשונית מהירה יותר, והשניונית איטית יותר.</span></button></li>
+        <li><button type="button" class="qopt" data-correct="false" data-fb="שימו לב לסדר: דווקא הראשונית מייצרת בעיקר IgM, והשניונית IgG. זה מסיח מסוג ״היפוך סדר״ — מחליף בין שני נתונים נכונים."><span class="qmark">ב</span><span>התגובה הראשונית מייצרת IgG והשניונית IgM.</span></button></li>
+        <li><button type="button" class="qopt" data-correct="true" data-fb="בול! תאי הזיכרון הם הסוד — הם הופכים את התגובה השניונית למהירה וחזקה יותר. בדיוק ככה חושבים בבגרות."><span class="qmark">ג</span><span>השניונית מהירה וחזקה יותר, בזכות תאי הזיכרון.</span></button></li>
+        <li><button type="button" class="qopt" data-correct="false" data-fb="לא — יש הבדל מהותי מאוד ביניהן. ״שלילה גורפת״ (״אין הבדל״) היא כמעט תמיד מסיח שגוי בבגרות."><span class="qmark">ד</span><span>אין הבדל — מדובר באותו מנגנון בדיוק.</span></button></li>
+      </ul>
+      <div class="quiz-fb" id="quizFb" role="status" hidden></div>
+      <div class="quiz-cta" id="quizCta" hidden>
+        <p>ככה נראה שיעור איתי — כל טעות הופכת להזדמנות ללמוד.</p>
+        <a class="btn btn-wa" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A0%D7%99%D7%A1%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A9%D7%90%D7%9C%D7%94%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">רוצה שיעור כזה? דברו איתי</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1238,6 +1323,47 @@
       entries.forEach(function(en){ if(en.isIntersecting){ run(en.target); io.unobserve(en.target); } });
     }, {threshold:0.4});
     nums.forEach(function(n){ io.observe(n); });
+  })();
+
+  // Try-me quiz — reveal per-distractor feedback (the "פירוק והרכבה" teaching method)
+  (function(){
+    var opts=[].slice.call(document.querySelectorAll('.qopt'));
+    var fb=document.getElementById('quizFb'), cta=document.getElementById('quizCta');
+    if(!opts.length || !fb) return;
+    var answered=false;
+    opts.forEach(function(b){
+      b.addEventListener('click', function(){
+        if(answered) return; answered=true;
+        var correct=b.getAttribute('data-correct')==='true';
+        b.classList.add(correct?'correct':'wrong');
+        opts.forEach(function(o){ if(o.getAttribute('data-correct')==='true') o.classList.add('correct'); o.disabled=true; });
+        fb.innerHTML=(correct?'<b>כל הכבוד! </b>':'')+b.getAttribute('data-fb');
+        fb.classList.toggle('ok', correct);
+        fb.hidden=false; if(cta) cta.hidden=false;
+      });
+    });
+  })();
+
+  // WhatsApp message builder — chips build a ready-to-send message
+  (function(){
+    var box=document.querySelector('.wabuilder');
+    if(!box) return;
+    var go=document.getElementById('wabGo'), prev=document.getElementById('wabPreview');
+    var state={track:'שיעור פרטי אחד-על-אחד', mode:'מקוון בזום', grade:'כיתה י״א'};
+    function build(){
+      var msg='היי נתנאל, אני ב'+state.grade+' ומעוניין/ת ב'+state.track+' '+state.mode+' בביולוגיה. אשמח לפרטים על שיעור היכרות.';
+      if(go) go.setAttribute('href','https://wa.me/972524295838?text='+encodeURIComponent(msg));
+      if(prev) prev.textContent='ההודעה שתישלח: ״'+msg+'״';
+    }
+    box.querySelectorAll('.chip').forEach(function(c){
+      c.addEventListener('click', function(){
+        var k=c.getAttribute('data-k');
+        box.querySelectorAll('.chip[data-k="'+k+'"]').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+        c.setAttribute('aria-pressed','true');
+        state[k]=c.getAttribute('data-v'); build();
+      });
+    });
+    build();
   })();
 
   // Countdown to the biology bagrut — UPDATE the date below to the official exam date
