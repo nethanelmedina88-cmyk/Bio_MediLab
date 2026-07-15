@@ -103,11 +103,12 @@
     --amber-deep:#E08A0F;   /* hover */
     --amber-soft:#FCEFD7;   /* tint */
 
-    --green:     #3F9D69;   /* success / grades */
+    --green:     #2FA355;   /* success accent — leafier, distinct from teal */
+    --green-strong:#1C7D44; /* dark leaf green for white text (grade/save badges), AA */
     --green-soft:#E4F1E9;
 
-    --wa:        #0B7A6B;   /* whatsapp-style deep green — 5.2:1 on white text (AA) */
-    --wa-deep:   #0A6457;
+    --wa:        #0B7D4E;   /* WhatsApp green — greener/distinct from brand teal, 5.1:1 white (AA) */
+    --wa-deep:   #0A6541;
 
     --radius:    18px;
     --radius-sm: 12px;
@@ -385,7 +386,7 @@
   .bundle .price{ display:flex; flex-direction:column; gap:3px; align-items:flex-start }
   .bundle .old{ font-family:var(--head); color:var(--ink-3); text-decoration:line-through; font-size:15px }
   .bundle .new{ font-family:var(--head); font-weight:900; font-size:clamp(40px,6vw,54px); line-height:1; color:var(--ink) }
-  .bundle .save{ font-family:var(--head); font-weight:700; font-size:12px; padding:4px 11px; border-radius:999px; background:var(--green); color:#fff }
+  .bundle .save{ font-family:var(--head); font-weight:700; font-size:12px; padding:4px 11px; border-radius:999px; background:var(--green-strong); color:#fff }
 
   /* ===================== TESTIMONIALS ===================== */
   .car-wrap{ position:relative }
@@ -418,7 +419,7 @@
   .tcard .rl{ color:var(--ink-3); font-size:12.5px; margin-top:3px }
   .tcard .grade{
     position:absolute; inset-block-start:-11px; inset-inline-end:18px;
-    background:var(--green); color:#fff; font-family:var(--head); font-weight:800; font-size:14px;
+    background:var(--green-strong); color:#fff; font-family:var(--head); font-weight:800; font-size:14px;
     padding:5px 12px; border-radius:999px; box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:5px;
   }
   .tcard .grade .lbl{ font-family:var(--sans); font-weight:600; font-size:10px; opacity:.9 }
