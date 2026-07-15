@@ -608,6 +608,45 @@
   .app-card:hover::after{ opacity:1 }
   .app-card:hover{ box-shadow:0 0 30px 1px rgba(13,125,116,.28), var(--shadow-md) }
 
+  /* ===================== SCROLL PROGRESS BAR ===================== */
+  .scroll-prog{ position:fixed; top:0; inset-inline:0; height:3px; z-index:70; pointer-events:none }
+  .scroll-prog i{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--teal),var(--amber)); box-shadow:0 0 8px rgba(244,165,42,.55) }
+
+  /* ===================== HERO DNA (ambient) ===================== */
+  .hero .wrap{ position:relative; z-index:1 }
+  .hero-dna{ position:absolute; z-index:0; inset-block:-8% -8%; inset-inline-start:-1%; width:min(210px,30vw); opacity:.10; pointer-events:none; color:var(--teal) }
+  .hero-dna svg{ width:100%; height:auto; display:block; animation:dnaDrift 22s linear infinite }
+  @keyframes dnaDrift{ from{ transform:translateY(0) } to{ transform:translateY(-25%) } }
+  @media (max-width:760px){ .hero-dna{ opacity:.07; inset-inline-start:auto; inset-inline-end:-8%; width:140px } }
+
+  /* ===================== BENTO STATS ===================== */
+  .bento-sec{ padding-block:clamp(30px,5vw,52px); background:var(--bg-2); border-block:1px solid var(--line) }
+  .bento{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px }
+  @media (min-width:820px){ .bento{ grid-template-columns:repeat(4,1fr); grid-auto-rows:1fr } }
+  .btile{ position:relative; overflow:hidden; background:var(--surface); border:1px solid var(--line); border-radius:18px;
+    padding:20px 18px; display:flex; flex-direction:column; justify-content:center; gap:5px; box-shadow:var(--shadow-sm) }
+  .btile .bnum{ font-family:var(--head); font-weight:900; letter-spacing:-.02em; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; font-size:clamp(30px,5vw,40px) }
+  .btile .bnum em{ font-style:normal; color:var(--amber) }
+  .btile .blabel{ font-size:13px; color:var(--ink-2); line-height:1.4 }
+  .btile.b-hero{ grid-column:span 2; background:linear-gradient(150deg,var(--teal),var(--teal-deep)); border-color:var(--teal-deep); color:#fff }
+  @media (min-width:820px){ .btile.b-hero{ grid-row:span 2 } }
+  .btile.b-hero .bnum{ color:#fff; font-size:clamp(48px,9vw,80px) }
+  .btile.b-hero .blabel{ color:rgba(255,255,255,.88); font-size:15px }
+  .btile.b-hero::after{ content:""; position:absolute; inset-block-end:-34%; inset-inline-end:-12%; width:62%; aspect-ratio:1; border-radius:50%;
+    background:radial-gradient(circle, color-mix(in srgb, var(--amber) 55%, transparent), transparent 70%); opacity:.5; pointer-events:none }
+  .btile.b-full{ grid-column:span 2; flex-direction:row; align-items:center; gap:14px; background:var(--amber-soft); border-color:#F1D9A6 }
+  @media (min-width:820px){ .btile.b-full{ grid-column:span 4 } }
+  .btile.b-full .bic{ flex:0 0 46px; width:46px; height:46px; border-radius:13px; display:grid; place-items:center; background:#fff; color:var(--amber-deep) }
+  .btile.b-full b{ font-family:var(--head); font-weight:800; font-size:17px; display:block; color:var(--ink) }
+  .btile.b-full span{ font-size:13.5px; color:var(--ink-2) }
+
+  /* ===================== MOTION POLISH ===================== */
+  .reveal-on .grid-3 .reveal:nth-child(2), .reveal-on .bento .reveal:nth-child(2){ transition-delay:.07s }
+  .reveal-on .grid-3 .reveal:nth-child(3), .reveal-on .bento .reveal:nth-child(3){ transition-delay:.14s }
+  .reveal-on .bento .reveal:nth-child(4){ transition-delay:.21s }
+  .reveal-on .bento .reveal:nth-child(5){ transition-delay:.28s }
+  .bcard:hover .bcover{ transform:perspective(900px) rotateY(-6deg) translateY(-5px) }
+
   /* ===================== MOTION ===================== */
   @media (prefers-reduced-motion:reduce){
     *{ animation:none !important; transition:none !important; scroll-behavior:auto !important }
@@ -622,6 +661,8 @@
 </script>
 </head>
 <body>
+
+<div class="scroll-prog" aria-hidden="true"><i id="scrollProg"></i></div>
 
 <a class="skip" href="#main">דלגו לתוכן הראשי</a>
 
@@ -651,6 +692,15 @@
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" aria-labelledby="hero-h">
+  <div class="hero-dna" aria-hidden="true">
+    <svg viewBox="0 0 80 480" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+      <path d="M40 0 C68 20 68 40 40 60 C12 80 12 100 40 120 C68 140 68 160 40 180 C12 200 12 220 40 240 C68 260 68 280 40 300 C12 320 12 340 40 360 C68 380 68 400 40 420 C12 440 12 460 40 480"/>
+      <path d="M40 0 C12 20 12 40 40 60 C68 80 68 100 40 120 C12 140 12 160 40 180 C68 200 68 220 40 240 C12 260 12 280 40 300 C68 320 68 340 40 360 C12 380 12 400 40 420 C68 440 68 460 40 480" stroke-width="2.4"/>
+      <g stroke-width="2">
+        <line x1="15" y1="30" x2="65" y2="30"/><line x1="15" y1="90" x2="65" y2="90"/><line x1="15" y1="150" x2="65" y2="150"/><line x1="15" y1="210" x2="65" y2="210"/><line x1="15" y1="270" x2="65" y2="270"/><line x1="15" y1="330" x2="65" y2="330"/><line x1="15" y1="390" x2="65" y2="390"/><line x1="15" y1="450" x2="65" y2="450"/>
+      </g>
+    </svg>
+  </div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1 class="display" id="hero-h">בגרות בביולוגיה —<br><em>קצר, ברור, ולעניין.</em></h1>
@@ -666,24 +716,32 @@
   </div>
 </section>
 
-<!-- ===================== WHY ME ===================== -->
-<section class="whyme" aria-label="למה ללמוד עם נתנאל">
-  <div class="wrap whyme-grid">
-    <div class="whyme-item reveal">
-      <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span>
-      <div><b>10 שנות ניסיון</b><span>בהכנה לבגרות בביולוגיה וביוטכנולוגיה</span></div>
+<!-- ===================== BENTO STATS ===================== -->
+<section class="bento-sec" aria-label="נתנאל במספרים">
+  <div class="wrap bento">
+    <div class="btile b-hero reveal">
+      <span class="bnum" data-count="94">94</span>
+      <span class="blabel">ציון ממוצע בבגרות אצל התלמידים הממליצים</span>
     </div>
-    <div class="whyme-item reveal">
-      <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
-      <div><b>חומרים משלי</b><span>3 ספרים ואפליקציה שכתבתי</span></div>
+    <div class="btile reveal">
+      <span class="bnum" data-count="100">100</span>
+      <span class="blabel">הציון הגבוה ביותר שהושג</span>
     </div>
-    <div class="whyme-item reveal">
-      <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span>
-      <div><b>אסטרטגיות בגרות</b><span>שיטות פתרון לאמריקאיות ופתוחות</span></div>
+    <div class="btile reveal">
+      <span class="bnum" data-count="10" data-suffix="+">10+</span>
+      <span class="blabel">שנות ניסיון בהכנה לבגרות</span>
     </div>
-    <div class="whyme-item reveal">
-      <span class="whyme-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 4.6a5.4 5.4 0 0 0-7.6 0l-.8.8-.8-.8a5.4 5.4 0 1 0-7.6 7.6l8.4 8.4 8.4-8.4a5.4 5.4 0 0 0 0-7.6z"/></svg></span>
-      <div><b>ליווי אישי</b><span>עד הבחינה, בגובה העיניים</span></div>
+    <div class="btile reveal">
+      <span class="bnum" data-count="1706">1,706</span>
+      <span class="blabel">שאלות בספרים שכתבתי</span>
+    </div>
+    <div class="btile reveal">
+      <span class="bnum">3</span>
+      <span class="blabel">תארים אקדמיים · חיפה · אורנים · ויצמן</span>
+    </div>
+    <div class="btile b-full reveal">
+      <span class="bic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 4.6a5.4 5.4 0 0 0-7.6 0l-.8.8-.8-.8a5.4 5.4 0 1 0-7.6 7.6l8.4 8.4 8.4-8.4a5.4 5.4 0 0 0 0-7.6z"/></svg></span>
+      <div><b>ליווי אישי עד הבחינה</b><span>תוכנית מותאמת, אסטרטגיות בגרות, וחומרים שכתבתי בעצמי — הכול בגובה העיניים.</span></div>
     </div>
   </div>
 </section>
@@ -985,12 +1043,6 @@
       <h2 id="about-h">נעים להכיר — אני <em>נתנאל</em></h2>
       <p>מורה לביולוגיה ולביוטכנולוגיה עם 10 שנות ניסיון בהכנה לבגרות בביולוגיה (5 יח״ל) ובביוטכנולוגיה (10 יח״ל). מעביר שיעורים פרטיים אחד-על-אחד או בקבוצות קטנות — מקוון בזום או פרונטלי במרכז ״כיוונים״ באשדוד. אני מאמין שלכל תלמיד יש דרך משלו להבין, והתפקיד שלי הוא למצוא אותה.</p>
       <p>לצד ההוראה כתבתי שלושה ספרי עזר שמסודרים בדיוק כמו שתוכנית הלימודים דורשת: <strong>ספר השאלות</strong> עם מעל 1,700 שאלות בגרות, <strong>קטעי מחקר</strong> בפורמט בגרות עם פתרונות, ו<strong>מונחון</strong> עם 452 מושגים — כלים שאני משתמש בהם בשיעורים עצמם.</p>
-      <div class="statband">
-        <div class="statband-cell"><b>94</b><span>ציון ממוצע בבגרות אצל הממליצים</span></div>
-        <div class="statband-cell"><b>100</b><span>הציון הגבוה ביותר שהושג</span></div>
-        <div class="statband-cell"><b>10<em>+</em></b><span>שנות ניסיון בהכנה לבגרות</span></div>
-        <div class="statband-cell"><b>3</b><span>תארים אקדמיים · חיפה · אורנים · מכון ויצמן</span></div>
-      </div>
       <div class="about-tags">
         <span class="tag teal">B.Sc ביולוגיה · חיפה</span>
         <span class="tag green">M.Teach הוראת ביולוגיה · אורנים</span>
@@ -1147,6 +1199,47 @@
 </a>
 
 <script>
+  // Scroll progress bar
+  (function(){
+    var bar=document.getElementById('scrollProg');
+    if(!bar) return;
+    var ticking=false;
+    function update(){
+      var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop||0;
+      var max=(h.scrollHeight-h.clientHeight)||1;
+      bar.style.width=Math.min(100,Math.max(0,(sc/max)*100))+'%';
+      ticking=false;
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ requestAnimationFrame(update); ticking=true; } }, {passive:true});
+    window.addEventListener('resize', update, {passive:true});
+    update();
+  })();
+
+  // Count-up for bento numbers when scrolled into view
+  (function(){
+    var nums=[].slice.call(document.querySelectorAll('.bnum[data-count]'));
+    if(!nums.length) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function fmt(n){ return n.toLocaleString('en-US'); }
+    function run(el){
+      var target=parseInt(el.getAttribute('data-count'),10)||0, suffix=el.getAttribute('data-suffix')||'';
+      if(reduce || !('requestAnimationFrame' in window)){ el.textContent=fmt(target)+suffix; return; }
+      var start=null, dur=1200;
+      function step(t){
+        if(!start) start=t;
+        var p=Math.min(1,(t-start)/dur), e=1-Math.pow(1-p,3);
+        el.textContent=fmt(Math.round(target*e))+suffix;
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if(!('IntersectionObserver' in window)){ nums.forEach(run); return; }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ run(en.target); io.unobserve(en.target); } });
+    }, {threshold:0.4});
+    nums.forEach(function(n){ io.observe(n); });
+  })();
+
   // Countdown to the biology bagrut — UPDATE the date below to the official exam date
   (function(){
     var target = new Date('2027-05-20T09:00:00+03:00'); /* ← עדכן לתאריך המדויק של מועד הבגרות */
