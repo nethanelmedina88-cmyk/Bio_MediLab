@@ -1264,9 +1264,18 @@
           <li>א׳—ה׳ · <span class="num-ltr">10:00—21:00</span></li>
         </ul>
       </div>
+      <div>
+        <h5>מידע משפטי</h5>
+        <ul>
+          <li><a href="legal.html#terms">תנאי שימוש</a></li>
+          <li><a href="legal.html#privacy">מדיניות פרטיות</a></li>
+          <li><a href="legal.html#accessibility">הצהרת נגישות</a></li>
+          <li><a href="legal.html#refund">ביטולים והחזרים</a></li>
+        </ul>
+      </div>
     </div>
     <div class="foot-bot">
-      <span>© 2026 MediLab · נתנאל יוחאי מדינה</span>
+      <span>© 2026 MediLab · נתנאל יוחאי מדינה · כל הזכויות שמורות</span>
       <span>שיעורים פרטיים · ביולוגיה 5 יח״ל · ביוטכנולוגיה 10 יח״ל</span>
     </div>
   </div>
@@ -1427,6 +1436,18 @@
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     items.forEach(function(el){ io.observe(el); });
   })();
+</script>
+<div id="cookiebar" role="dialog" aria-label="הודעת עוגיות" style="display:none;position:fixed;inset-inline:0;bottom:0;z-index:80;background:#11241F;color:#fff;padding:14px 18px;box-shadow:0 -6px 24px rgba(0,0,0,.28)">
+  <div style="max-width:900px;margin:0 auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;font-family:'Assistant',system-ui,sans-serif;font-size:14.5px">
+    <span style="flex:1;min-width:220px">אתר זה משתמש בעוגיות לשיפור החוויה ולמדידה סטטיסטית. המשך הגלישה מהווה הסכמה. <a href="legal.html#privacy" style="color:#F4A52A">מדיניות הפרטיות</a></span>
+    <button id="cookieok" style="background:#F4A52A;color:#11241F;border:none;border-radius:10px;padding:9px 22px;font-weight:700;font-family:inherit;font-size:14.5px;cursor:pointer">אישור</button>
+  </div>
+</div>
+<script>
+(function(){ try{ if(localStorage.getItem('ml-cookie-ok')==='1') return; }catch(e){}
+  var bar=document.getElementById('cookiebar'); if(!bar) return; bar.style.display='block';
+  var btn=document.getElementById('cookieok'); if(btn) btn.addEventListener('click',function(){ try{localStorage.setItem('ml-cookie-ok','1');}catch(e){} bar.style.display='none'; });
+})();
 </script>
 </body>
 </html>
