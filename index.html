@@ -730,6 +730,11 @@
   .chip[aria-pressed="true"]{ background:var(--teal); border-color:var(--teal); color:#fff }
   .wab-go{ margin-top:8px }
   .wab-preview{ margin:12px 0 0; font-size:13px; color:var(--ink-3); line-height:1.5; font-style:italic }
+  .wab-price{ display:flex; gap:11px; align-items:flex-start; margin:0 0 16px; padding:13px 15px;
+    background:var(--surface); border:1px solid var(--line); border-inline-start:3px solid var(--teal); border-radius:12px }
+  .wab-price svg{ flex:0 0 20px; color:var(--teal); margin-top:2px }
+  .wab-price b{ font-family:var(--head); font-weight:700; font-size:14.5px; display:block; margin-bottom:3px }
+  .wab-price span{ font-size:13.5px; color:var(--ink-2); line-height:1.6 }
 
   /* ===================== MOTION ===================== */
   @media (prefers-reduced-motion:reduce){
@@ -888,6 +893,14 @@
       <div class="wab-head">
         <b>ההתחלה שלכם — ב-3 צעדים</b>
         <span>בוחרים מסלול, בוחרים איך, ושולחים. השיעור הראשון על חשבוני: בלי תשלום מראש, בלי כרטיס אשראי ובלי התחייבות להמשך — פשוט כדי לבדוק יחד שזה מתאים לכם.</span>
+      </div>
+
+      <div class="wab-price">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <div>
+          <b>ולמה אין כאן מחירון?</b>
+          <span>כי שיעור פרטי שבועי, קבוצה קטנה ומרתון לפני הבגרות הם לא אותו דבר. את המחיר המדויק נסגור בשיחה קצרה לפי המסלול והתדירות שתבחרו — בלי דמי הרשמה, בלי חבילות כפויות, ומשלמים רק על שיעורים שהתקיימו.</span>
+        </div>
       </div>
       <div class="wab-group">
         <span class="wab-lbl">1 · מסלול</span>
@@ -1256,6 +1269,10 @@
       <details class="q">
         <summary>שיעור ההיכרות בתשלום? <span class="plus" aria-hidden="true">+</span></summary>
         <div class="ans">לא. שיעור ההיכרות הראשון הוא על חשבוני וללא שום התחייבות — נכיר, נאבחן את נקודת הפתיחה ונבנה יחד מסלול שמתאים לכם.</div>
+      </details>
+      <details class="q">
+        <summary>כמה עולה שיעור? <span class="plus" aria-hidden="true">+</span></summary>
+        <div class="ans">אין מחירון אחיד, כי המסלולים שונים זה מזה: שיעור פרטי אחד-על-אחד, קבוצה קטנה של עד 4, ומרתון אינטנסיבי לפני הבגרות מתומחרים אחרת. את המחיר המדויק נסגור בשיחה קצרה בוואטסאפ לפי המסלול והתדירות שתבחרו — בלי דמי הרשמה, בלי חבילות כפויות, ומשלמים רק על שיעורים שהתקיימו. השיעור הראשון, כאמור, על חשבוני.</div>
       </details>
     </div>
   </div>
