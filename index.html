@@ -409,6 +409,10 @@
   .bld-item.off{ opacity:.6 }
   .bld-item:focus-within{ outline:3px solid var(--teal); outline-offset:2px }
   .bld-cb{ width:21px; height:21px; flex:0 0 auto; accent-color:var(--teal); cursor:pointer; margin:0 }
+  .bld-thumb{ flex:0 0 44px; width:44px; height:56px; border-radius:7px; overflow:hidden; background:#fff;
+    border:1px solid var(--line); box-shadow:0 2px 7px rgba(17,36,31,.16); transition:transform .22s ease }
+  .bld-thumb img{ width:100%; height:100%; object-fit:contain; display:block }
+  .bld-item.on .bld-thumb{ transform:scale(1.06) rotate(-1.5deg) }
   .bld-txt{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px }
   .bld-txt b{ font-family:var(--head); font-weight:700; font-size:15.5px; line-height:1.25 }
   .bld-txt em{ font-style:normal; font-size:12.5px; color:var(--ink-3); line-height:1.35 }
@@ -882,11 +886,11 @@
 
     <div class="wabuilder reveal">
       <div class="wab-head">
-        <b>לא בטוחים מה מתאים? בונים פנייה ב-30 שניות</b>
-        <span>בחרו את מה שמתאים לכם — ותקבלו הודעת וואטסאפ מוכנה. שיעור היכרות ראשון תמיד על חשבוני.</span>
+        <b>ההתחלה שלכם — ב-3 צעדים</b>
+        <span>בוחרים מסלול, בוחרים איך, ושולחים. השיעור הראשון על חשבוני: בלי תשלום מראש, בלי כרטיס אשראי ובלי התחייבות להמשך — פשוט כדי לבדוק יחד שזה מתאים לכם.</span>
       </div>
       <div class="wab-group">
-        <span class="wab-lbl">מסלול</span>
+        <span class="wab-lbl">1 · מסלול</span>
         <div class="wab-chips">
           <button type="button" class="chip" data-k="track" data-v="שיעור פרטי אחד-על-אחד" aria-pressed="true">אחד-על-אחד</button>
           <button type="button" class="chip" data-k="track" data-v="קבוצה קטנה">קבוצה קטנה</button>
@@ -894,14 +898,14 @@
         </div>
       </div>
       <div class="wab-group">
-        <span class="wab-lbl">איך</span>
+        <span class="wab-lbl">2 · איך</span>
         <div class="wab-chips">
           <button type="button" class="chip" data-k="mode" data-v="מקוון בזום" aria-pressed="true">מקוון בזום</button>
           <button type="button" class="chip" data-k="mode" data-v="פרונטלי באשדוד">פרונטלי באשדוד</button>
         </div>
       </div>
       <div class="wab-group">
-        <span class="wab-lbl">כיתה</span>
+        <span class="wab-lbl">3 · כיתה</span>
         <div class="wab-chips">
           <button type="button" class="chip" data-k="grade" data-v="כיתה י׳">י׳</button>
           <button type="button" class="chip" data-k="grade" data-v="כיתה י״א" aria-pressed="true">י״א</button>
@@ -1114,17 +1118,20 @@
       <div class="bld-items">
         <label class="bld-item">
           <input type="checkbox" class="bld-cb" data-name="ספר השאלות" data-price="149" checked />
-          <span class="bld-txt"><b>ספר השאלות</b><em>1,706 שאלות בגרות מקוריות</em></span>
+          <span class="bld-thumb" aria-hidden="true"><img src="book-questions.jpg" alt="" width="44" height="56" loading="lazy" /></span>
+          <span class="bld-txt"><b>ספר השאלות</b><em>1,706 שאלות — לתרגל עד שהפתרון מרגיש אוטומטי</em></span>
           <span class="bld-price num-ltr">₪149</span>
         </label>
         <label class="bld-item">
           <input type="checkbox" class="bld-cb" data-name="קטעי מחקר" data-price="95" checked />
-          <span class="bld-txt"><b>קטעי מחקר</b><em>50 קטעים עם פתרונות מלאים</em></span>
+          <span class="bld-thumb" aria-hidden="true"><img src="book-research.jpg" alt="" width="44" height="56" loading="lazy" /></span>
+          <span class="bld-txt"><b>קטעי מחקר</b><em>50 קטעים — להיכנס לבחינה בלי הפתעות</em></span>
           <span class="bld-price num-ltr">₪95</span>
         </label>
         <label class="bld-item">
           <input type="checkbox" class="bld-cb" data-name="מונחון" data-price="69" checked />
-          <span class="bld-txt"><b>מונחון</b><em>452 מושגים, מנוקד ומאויר</em></span>
+          <span class="bld-thumb" aria-hidden="true"><img src="book-glossary.jpg" alt="" width="44" height="56" loading="lazy" /></span>
+          <span class="bld-txt"><b>מונחון</b><em>452 מושגים — כשנתקעים, התשובה בהישג יד</em></span>
           <span class="bld-price num-ltr">₪69</span>
         </label>
       </div>
@@ -1137,7 +1144,7 @@
       </div>
 
       <a class="btn btn-primary bld-cta" id="bldCta" href="https://wa.me/972524295838" target="_blank" rel="noopener">לשליחת ההזמנה בוואטסאפ <span class="arr" aria-hidden="true">←</span></a>
-      <p class="bld-fine">ההודעה נפתחת בוואטסאפ כשהיא כבר כתובה — אפשר לערוך לפני השליחה.</p>
+      <p class="bld-fine">זה המחיר הסופי — אין דמי טיפול, אין עמלות נסתרות ואין חיוב חוזר. ההודעה נפתחת בוואטסאפ כשהיא כבר כתובה, ואפשר לערוך או פשוט לא לשלוח.</p>
     </div>
   </div>
 </section>
@@ -1568,7 +1575,7 @@
     }
     cta.removeAttribute('aria-disabled');
     cta.removeAttribute('tabindex');
-    cta.innerHTML = 'לשליחת ההזמנה בוואטסאפ <span class="arr" aria-hidden="true">←</span>';
+    cta.innerHTML = 'לשליחת ההזמנה · <span class="num-ltr">₪' + now + '</span> <span class="arr" aria-hidden="true">←</span>';
     var msg = 'היי נתנאל, אשמח להזמין: ' + names.join(' + ') + ' — סה״כ ₪' + now + '.';
     cta.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
   }
