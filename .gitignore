@@ -9,3 +9,4 @@
 # Local-only tooling / backups (not part of the deployed site)
 scripts/
 assets-original/
+.claude/
