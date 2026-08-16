@@ -723,9 +723,16 @@
     color:#fff; font-family:var(--head); font-weight:700; font-size:16px;
     transition:background .2s ease, color .2s ease, transform .18s ease }
   .cls-cta:hover{ background:#fff; color:var(--teal-deep); transform:translateY(-2px) }
-  .cls-photo{ position:relative; min-height:260px }
+  .cls-photo{ position:relative; min-height:260px; background:var(--teal-deep) }
   @media (min-width:900px){ .cls-photo{ min-height:100% } }
-  .cls-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block }
+  .cls-slide{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+    opacity:0; transition:opacity .9s ease }
+  .cls-slide.on{ opacity:1 }
+  .cls-dots{ position:absolute; z-index:2; inset-block-end:14px; inset-inline:0; display:flex; justify-content:center; gap:8px }
+  .cls-dot{ width:9px; height:9px; border-radius:50%; border:0; padding:0; cursor:pointer;
+    background:rgba(255,255,255,.45); box-shadow:0 1px 4px rgba(0,0,0,.4); transition:background .25s ease, transform .25s ease }
+  .cls-dot[aria-current="true"]{ background:#fff; transform:scale(1.35) }
+  .cls-dots:empty{ display:none }
   .classroom.no-photo{ grid-template-columns:1fr }
   .classroom.no-photo .cls-photo{ display:none }
   .classroom.no-photo .cls-text{ order:0; max-width:900px; margin-inline:auto; width:100% }
@@ -754,27 +761,6 @@
   .reveal-on .bento .reveal:nth-child(4){ transition-delay:.21s }
   .reveal-on .bento .reveal:nth-child(5){ transition-delay:.28s }
   .bcard:hover .bcover{ transform:perspective(900px) rotateY(-6deg) translateY(-5px) }
-
-  /* ===================== TRY-ME QUIZ ===================== */
-  .quiz{ background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:clamp(20px,3vw,30px); box-shadow:var(--shadow-md); max-width:760px }
-  .quiz-q{ font-family:var(--head); font-weight:800; font-size:clamp(17px,2.4vw,20px); line-height:1.4; margin-bottom:16px }
-  .quiz-opts{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px }
-  .qopt{ width:100%; text-align:start; font-family:var(--sans); font-size:15px; color:var(--ink); background:var(--bg-2);
-    border:1.5px solid var(--line); border-radius:12px; padding:13px 15px; cursor:pointer; min-height:48px;
-    transition:background .18s ease, border-color .18s ease; display:flex; gap:10px; align-items:flex-start }
-  .qopt:hover:not(:disabled){ border-color:var(--teal); background:var(--teal-soft) }
-  .qopt:disabled{ cursor:default }
-  .qopt.correct{ border-color:var(--green); background:var(--green-soft) }
-  .qopt.wrong{ border-color:#D0533E; background:color-mix(in srgb,#D0533E 10%, #fff) }
-  .qopt .qmark{ flex:0 0 22px; width:22px; height:22px; border-radius:6px; display:grid; place-items:center; font-family:var(--head); font-weight:700; font-size:12px; margin-top:1px; background:var(--surface); border:1px solid var(--line-2) }
-  .qopt.correct .qmark{ background:var(--green); color:#fff; border-color:var(--green) }
-  .qopt.wrong .qmark{ background:#D0533E; color:#fff; border-color:#D0533E }
-  .quiz-fb{ margin-top:16px; padding:14px 16px; border-radius:12px; font-size:14.5px; line-height:1.6;
-    background:var(--teal-soft); border-inline-start:3px solid var(--teal); color:var(--ink) }
-  .quiz-fb.ok{ background:var(--green-soft); border-inline-start-color:var(--green) }
-  .quiz-fb b{ font-family:var(--head) }
-  .quiz-cta{ margin-top:16px; display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px }
-  .quiz-cta p{ margin:0; font-size:14.5px; color:var(--ink-2); flex:1 1 220px }
 
   /* ===================== WHATSAPP BUILDER ===================== */
   .wabuilder{ margin-top:24px; padding:clamp(20px,3vw,28px); border-radius:20px; background:linear-gradient(135deg,var(--teal-soft),var(--amber-soft)); border:1px solid #CFE2DC }
@@ -908,8 +894,13 @@
     </ul>
     <a class="cls-cta" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A8%D7%95%D7%A6%D7%94%2F%D7%94%20%D7%92%D7%9D%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%20%D7%A4%D7%A8%D7%98%D7%99" target="_blank" rel="noopener">רוצים גם שיעור פרטי?</a>
   </div>
-  <div class="cls-photo">
-    <img src="classroom.jpg" alt="נתנאל מדינה מלמד על הקשר בין מבנה האנזים לתפקודו, מול תלמידי כיתה" width="1187" height="880" loading="lazy" />
+  <div class="cls-photo" id="clsPhoto" aria-roledescription="מצגת תמונות" aria-label="רגעים מהכיתה">
+    <img class="cls-slide on" src="classroom.jpg" alt="נתנאל מדינה מלמד על הקשר בין מבנה האנזים לתפקודו, מול תלמידי כיתה" width="1187" height="880" />
+    <img class="cls-slide" src="classroom-2.jpg" alt="הרצאה בכיתת מדעים מול תלמידים והורים" width="1187" height="880" loading="lazy" />
+    <img class="cls-slide" src="classroom-3.jpg" alt="תלמידים עובדים בקבוצות על משימת ביולוגיה בליווי נתנאל" width="1187" height="880" loading="lazy" />
+    <img class="cls-slide" src="classroom-4.jpg" alt="נתנאל עם מחזור תלמידי מגמת ביולוגיה בכיתה" width="1187" height="880" loading="lazy" />
+    <img class="cls-slide" src="classroom-5.jpg" alt="תלמידי המגמה בחלוקי מעבדה לפני פעילות מעשית" width="1187" height="880" loading="lazy" />
+    <div class="cls-dots" id="clsDots" role="tablist" aria-label="בחירת תמונה"></div>
   </div>
 </section>
 
@@ -1008,31 +999,6 @@
         שליחת הפנייה בוואטסאפ
       </a>
       <p class="wab-preview" id="wabPreview"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== TRY-ME QUIZ ===================== -->
-<section class="block" id="tryme" aria-labelledby="tryme-h">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">נסו אותי</span>
-      <h2 id="tryme-h">שאלת בגרות אמיתית — <em>ננסה?</em></h2>
-      <p class="lead">שאלה אמריקאית אמיתית מבחינת הבגרות (2019), ברמה <strong>קשה מאוד</strong> — גנטיקה של תורשה מינית. בחרו תשובה, ותקבלו בדיוק את סוג המשוב שאני נותן בשיעור: לא רק ״נכון/לא נכון״, אלא איך כל מסיח מנסה להטעות.</p>
-    </div>
-    <div class="quiz reveal">
-      <div class="quiz-q">לזכר של זבוב הפירות (דרוזופילה) כרומוזומי XY, ולנקבה — XX. מוטציה נדירה יצרה אלל רצסיבי על כרומוזום X בתא זרע של זכר (דור P). את צאצאיו הכליאו בינם לבין עצמם. בפנוטיפ של איזה פרט צפויה המוטציה להתבטא?</div>
-      <ul class="quiz-opts">
-        <li><button type="button" class="qopt" data-correct="false" data-fb="בנות F1 אכן מקבלות מהאב את ה-X עם המוטציה — אבל גם X תקין מהאם, ולכן הן נשאיות בלבד ולא מבטאות אלל רצסיבי. מסיח ״עצירה מוקדמת מדי״: מפתה לעצור כבר בדור הראשון."><span class="qmark">א</span><span>נקבה בדור F1</span></button></li>
-        <li><button type="button" class="qopt" data-correct="false" data-fb="זכרי F1 מקבלים את ה-X שלהם דווקא מהאם (מהאב הם מקבלים Y), ולכן הם כלל אינם נושאים את המוטציה. מסיח ״היפוך מקור״ — בלבול מאיזה הורה מגיע ה-X."><span class="qmark">ב</span><span>זכר בדור F1</span></button></li>
-        <li><button type="button" class="qopt" data-correct="false" data-fb="כדי שנקבה תבטא אלל רצסיבי ב-X דרושים לה שני עותקים — אחד מכל הורה. אבל זכרי F1 אינם נושאים את המוטציה, אז אין ל-F2 נקבה מאין לקבל עותק שני. מסיח ״הנחת סימטריה״ — בלי לבדוק את שני המקורות."><span class="qmark">ג</span><span>נקבה בדור F2</span></button></li>
-        <li><button type="button" class="qopt" data-correct="true" data-fb="בדיוק! ה-X עם המוטציה עובר מהאב לבנותיו (נשאיות ב-F1). כשמכליאים אותן, חצי מבניהן — זכרי F2 — מקבלים ממן את ה-X הזה, והם המיזיגוטים (X יחיד), ולכן מבטאים את התכונה הרצסיבית. מעקב על פני שני דורות — זה מה שמפריד ל-100."><span class="qmark">ד</span><span>זכר בדור F2</span></button></li>
-      </ul>
-      <div class="quiz-fb" id="quizFb" role="status" hidden></div>
-      <div class="quiz-cta" id="quizCta" hidden>
-        <p>ככה נראה שיעור איתי — כל טעות הופכת להזדמנות ללמוד.</p>
-        <a class="btn btn-wa" href="https://wa.me/972524295838?text=%D7%94%D7%99%D7%99%20%D7%A0%D7%AA%D7%A0%D7%90%D7%9C%2C%20%D7%A0%D7%99%D7%A1%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A9%D7%90%D7%9C%D7%94%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">רוצה שיעור כזה? דברו איתי</a>
-      </div>
     </div>
   </div>
 </section>
@@ -1537,14 +1503,58 @@
     nums.forEach(function(n){ io.observe(n); });
   })();
 
-  // Classroom banner — show the photo half only once the photo actually exists,
-  // so the band never renders with a broken image. Drop classroom.jpg in and it lights up.
+  // Classroom banner — a slideshow that only ever shows photos that really exist.
+  // Each slide is probed; missing files are dropped, so you can add classroom-2..5.jpg
+  // later and they join the rotation on their own. Advances every 5s, pauses on hover.
   (function(){
     var sec=document.getElementById('classroom'); if(!sec) return;
-    var img=sec.querySelector('.cls-photo img'); if(!img) return;
-    var probe=new Image();
-    probe.onload=function(){ if(probe.naturalWidth>0) sec.classList.remove('no-photo'); };
-    probe.src=img.getAttribute('src');
+    var slides=[].slice.call(sec.querySelectorAll('.cls-slide'));
+    var dots=document.getElementById('clsDots');
+    if(!slides.length) return;
+    var live=[], checked=0;
+
+    slides.forEach(function(img){
+      var probe=new Image();
+      probe.onload =function(){ if(probe.naturalWidth>0) live.push(img); done(); };
+      probe.onerror=function(){ img.remove(); done(); };
+      probe.src=img.getAttribute('src');
+    });
+
+    function done(){
+      if(++checked < slides.length) return;
+      if(!live.length) return;                       // nothing loaded → band stays text-only
+      live.sort(function(a,b){ return slides.indexOf(a)-slides.indexOf(b); });
+      sec.classList.remove('no-photo');
+      slides.forEach(function(s){ s.classList.remove('on'); });
+      var i=0; live[0].classList.add('on');
+      if(live.length < 2) return;                    // single photo → no rotation, no dots
+
+      live.forEach(function(_,n){
+        var d=document.createElement('button');
+        d.className='cls-dot'; d.type='button';
+        d.setAttribute('role','tab');
+        d.setAttribute('aria-label','תמונה ' + (n+1));
+        d.setAttribute('aria-current', n===0 ? 'true' : 'false');
+        d.addEventListener('click', function(){ show(n); restart(); });
+        dots.appendChild(d);
+      });
+      var buttons=[].slice.call(dots.children);
+
+      function show(n){
+        live[i].classList.remove('on'); buttons[i].setAttribute('aria-current','false');
+        i=(n+live.length)%live.length;
+        live[i].classList.add('on');   buttons[i].setAttribute('aria-current','true');
+      }
+      var timer=null;
+      function start(){ timer=setInterval(function(){ show(i+1); }, 5000); }
+      function restart(){ clearInterval(timer); start(); }
+      var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!reduce){
+        start();
+        sec.addEventListener('mouseenter', function(){ clearInterval(timer); });
+        sec.addEventListener('mouseleave', start);
+      }
+    }
   })();
 
   // FAQ — slide answers open/closed smoothly instead of snapping
@@ -1569,25 +1579,6 @@
           requestAnimationFrame(function(){ ans.style.height=h+'px'; ans.style.opacity='1'; });
           setTimeout(function(){ ans.style.height=''; ans.style.opacity=''; d.dataset.busy=''; }, 320);
         }
-      });
-    });
-  })();
-
-  // Try-me quiz — reveal per-distractor feedback (the "פירוק והרכבה" teaching method)
-  (function(){
-    var opts=[].slice.call(document.querySelectorAll('.qopt'));
-    var fb=document.getElementById('quizFb'), cta=document.getElementById('quizCta');
-    if(!opts.length || !fb) return;
-    var answered=false;
-    opts.forEach(function(b){
-      b.addEventListener('click', function(){
-        if(answered) return; answered=true;
-        var correct=b.getAttribute('data-correct')==='true';
-        b.classList.add(correct?'correct':'wrong');
-        opts.forEach(function(o){ if(o.getAttribute('data-correct')==='true') o.classList.add('correct'); o.disabled=true; });
-        fb.innerHTML=(correct?'<b>כל הכבוד! </b>':'')+b.getAttribute('data-fb');
-        fb.classList.toggle('ok', correct);
-        fb.hidden=false; if(cta) cta.hidden=false;
       });
     });
   })();
