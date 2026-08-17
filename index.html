@@ -726,7 +726,7 @@
   .cls-photo{ position:relative; min-height:260px; background:var(--teal-deep) }
   @media (min-width:900px){ .cls-photo{ min-height:100% } }
   .cls-slide{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
-    opacity:0; transition:opacity .9s ease }
+    opacity:0; transition:opacity .6s ease }   /* short fade → each photo holds ~4.4s fully visible in the 5s slot */
   .cls-slide.on{ opacity:1 }
   .cls-dots{ position:absolute; z-index:2; inset-block-end:6px; inset-inline:0; display:flex; justify-content:center; gap:0 }
   /* the button is a comfortable 34px tap target; only the inner dot is visible */
@@ -901,6 +901,7 @@
   </div>
   <div class="cls-photo" id="clsPhoto" aria-roledescription="מצגת תמונות" aria-label="רגעים מהכיתה">
     <img class="cls-slide on" src="classroom.jpg" alt="נתנאל מדינה מלמד על הקשר בין מבנה האנזים לתפקודו, מול תלמידי הכיתה" width="1187" height="880" />
+    <img class="cls-slide" src="classroom-1.webp" alt="נתנאל מלמד את מבנה ה-DNA — נוקלאוטידים וסליל כפול — על הלוח מול הכיתה" width="1024" height="573" loading="lazy" />
     <img class="cls-slide" src="classroom-2.webp" alt="תלמידי המגמה בחלוקי מעבדה וכפפות, לפני פעילות מעשית בחוץ" width="1439" height="873" loading="lazy" />
     <img class="cls-slide" src="classroom-3.webp" alt="תמונה קבוצתית של מחזור מגמת הביולוגיה בכיתה בסוף השנה" width="1179" height="880" loading="lazy" />
     <img class="cls-slide" src="classroom-4.webp" alt="תלמידים עובדים בקבוצות על כרטיסיות משימה, ונתנאל עובר בין השולחנות" width="2000" height="1500" loading="lazy" />
